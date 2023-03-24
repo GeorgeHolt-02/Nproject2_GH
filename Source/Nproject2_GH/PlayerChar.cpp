@@ -162,7 +162,7 @@ void APlayerChar::BeginPlay()
 		}
 		else
 		{
-			HighScore = CurrentGameInstance->TopTenScores.Last().Score;
+			HighScore = CurrentGameInstance->TopTenScores[0].Score;
 		}
 	}
 	
