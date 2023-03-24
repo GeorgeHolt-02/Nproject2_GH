@@ -190,6 +190,7 @@ void AEnemy_MuscleGrunt::MainBehaviour(float DeltaTime)
 void AEnemy_MuscleGrunt::DamageFunction(float Damage)
 {
 	Health_Current -= Damage;
+	UpdateMultiplier();
 	if(Player)
 	{
 		Player->MeterDecrementPauseTime = FlashTime_Max;

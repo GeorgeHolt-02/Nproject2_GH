@@ -75,7 +75,17 @@ void UWidget_PlayerHUD::SetMultiplier(float CurrentMultiplier)
 {
 	if(MultiplierTextBlock)
 	{
-		MultiplierTextBlock->SetText(FText::FromString((FString("x") + (FString::SanitizeFloat(CurrentMultiplier)))));
+		if(Player)
+		{
+			if(CurrentMultiplier >= Player->ScoreMultiplier_Max)
+			{
+				MultiplierTextBlock->SetText(FText::FromString((FString("x") + (FString::SanitizeFloat(CurrentMultiplier)) + FString(" (MAX!)"))));
+			}
+			else
+			{
+				MultiplierTextBlock->SetText(FText::FromString((FString("x") + (FString::SanitizeFloat(CurrentMultiplier)))));
+			}
+		}
 	}
 }
 

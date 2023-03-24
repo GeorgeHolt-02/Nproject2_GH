@@ -20,6 +20,13 @@ void EmptyLinkFunctionForGeneratedCodeBaseEnemy() {}
 	NPROJECT2_GH_API UClass* Z_Construct_UClass_APlayerChar_NoRegister();
 	NPROJECT2_GH_API UClass* Z_Construct_UClass_UMyGameInstance_NoRegister();
 // End Cross Module References
+	DEFINE_FUNCTION(ABaseEnemy::execUpdateMultiplier)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->UpdateMultiplier();
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(ABaseEnemy::execOnDeath)
 	{
 		P_GET_OBJECT(AActor,Z_Param_DestroyedActor);
@@ -47,6 +54,7 @@ void EmptyLinkFunctionForGeneratedCodeBaseEnemy() {}
 		static const FNameNativePtrPair Funcs[] = {
 			{ "OnDeath", &ABaseEnemy::execOnDeath },
 			{ "OnOverlapStart", &ABaseEnemy::execOnOverlapStart },
+			{ "UpdateMultiplier", &ABaseEnemy::execUpdateMultiplier },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 	}
@@ -167,6 +175,30 @@ void EmptyLinkFunctionForGeneratedCodeBaseEnemy() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_ABaseEnemy_UpdateMultiplier_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ABaseEnemy_UpdateMultiplier_Statics::Function_MetaDataParams[] = {
+		{ "Comment", "//Updates player multiplier\n" },
+		{ "ModuleRelativePath", "BaseEnemy.h" },
+		{ "ToolTip", "Updates player multiplier" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ABaseEnemy_UpdateMultiplier_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABaseEnemy, nullptr, "UpdateMultiplier", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ABaseEnemy_UpdateMultiplier_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_ABaseEnemy_UpdateMultiplier_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_ABaseEnemy_UpdateMultiplier()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ABaseEnemy_UpdateMultiplier_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(ABaseEnemy);
 	UClass* Z_Construct_UClass_ABaseEnemy_NoRegister()
 	{
@@ -187,6 +219,10 @@ void EmptyLinkFunctionForGeneratedCodeBaseEnemy() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_PointsToAward_MetaData[];
 #endif
 		static const UECodeGen_Private::FUnsizedIntPropertyParams NewProp_PointsToAward;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_MeterToAward_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_MeterToAward;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_Health_Max_MetaData[];
 #endif
@@ -245,6 +281,7 @@ void EmptyLinkFunctionForGeneratedCodeBaseEnemy() {}
 	const FClassFunctionLinkInfo Z_Construct_UClass_ABaseEnemy_Statics::FuncInfo[] = {
 		{ &Z_Construct_UFunction_ABaseEnemy_OnDeath, "OnDeath" }, // 2484382312
 		{ &Z_Construct_UFunction_ABaseEnemy_OnOverlapStart, "OnOverlapStart" }, // 1036320217
+		{ &Z_Construct_UFunction_ABaseEnemy_UpdateMultiplier, "UpdateMultiplier" }, // 1222436881
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ABaseEnemy_Statics::Class_MetaDataParams[] = {
@@ -271,6 +308,15 @@ void EmptyLinkFunctionForGeneratedCodeBaseEnemy() {}
 	};
 #endif
 	const UECodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_ABaseEnemy_Statics::NewProp_PointsToAward = { "PointsToAward", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ABaseEnemy, PointsToAward), METADATA_PARAMS(Z_Construct_UClass_ABaseEnemy_Statics::NewProp_PointsToAward_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ABaseEnemy_Statics::NewProp_PointsToAward_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ABaseEnemy_Statics::NewProp_MeterToAward_MetaData[] = {
+		{ "Category", "BaseEnemy" },
+		{ "Comment", "//Amount of multiplier meter to award the player upon death */\n" },
+		{ "ModuleRelativePath", "BaseEnemy.h" },
+		{ "ToolTip", "Amount of multiplier meter to award the player upon death */" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ABaseEnemy_Statics::NewProp_MeterToAward = { "MeterToAward", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ABaseEnemy, MeterToAward), METADATA_PARAMS(Z_Construct_UClass_ABaseEnemy_Statics::NewProp_MeterToAward_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ABaseEnemy_Statics::NewProp_MeterToAward_MetaData)) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ABaseEnemy_Statics::NewProp_Health_Max_MetaData[] = {
 		{ "Category", "BaseEnemy" },
@@ -379,6 +425,7 @@ void EmptyLinkFunctionForGeneratedCodeBaseEnemy() {}
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ABaseEnemy_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABaseEnemy_Statics::NewProp_EnemyCollider,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABaseEnemy_Statics::NewProp_PointsToAward,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABaseEnemy_Statics::NewProp_MeterToAward,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABaseEnemy_Statics::NewProp_Health_Max,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABaseEnemy_Statics::NewProp_Health_Current,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABaseEnemy_Statics::NewProp_bKillOnContact,
@@ -427,9 +474,9 @@ void EmptyLinkFunctionForGeneratedCodeBaseEnemy() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_BaseEnemy_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ABaseEnemy, ABaseEnemy::StaticClass, TEXT("ABaseEnemy"), &Z_Registration_Info_UClass_ABaseEnemy, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABaseEnemy), 1059503870U) },
+		{ Z_Construct_UClass_ABaseEnemy, ABaseEnemy::StaticClass, TEXT("ABaseEnemy"), &Z_Registration_Info_UClass_ABaseEnemy, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABaseEnemy), 1860552794U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_BaseEnemy_h_1853962930(TEXT("/Script/Nproject2_GH"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_BaseEnemy_h_296664628(TEXT("/Script/Nproject2_GH"),
 		Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_BaseEnemy_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_BaseEnemy_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

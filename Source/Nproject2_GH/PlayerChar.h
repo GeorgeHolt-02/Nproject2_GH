@@ -194,13 +194,11 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	float ScoreMultiplier_ChangeBy;
 	
-	//Score multiplier meter (required for next multiplier increase, current and how much to increase by, respectively)
+	//Score multiplier meter (required for next multiplier increase and current, respectively)
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	float MultiplierMeter_NeededForIncrease;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	float MultiplierMeter_Current;
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	float MultiplierMeter_IncreaseBy;
 
 	//Time to pause score multiplier meter decrementing for
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)

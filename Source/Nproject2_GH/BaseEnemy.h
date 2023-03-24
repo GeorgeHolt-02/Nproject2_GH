@@ -22,6 +22,9 @@ public:
 	//* Number of points to award the player upon death */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	int PointsToAward;
+	//Amount of multiplier meter to award the player upon death */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	float MeterToAward;
 	
 	//* Enemy health (maximum and current, respectively) */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
@@ -98,4 +101,8 @@ public:
 	//Adds points upon death
 	UFUNCTION()
 	void OnDeath(AActor* DestroyedActor);
+
+	//Updates player multiplier
+	UFUNCTION()
+	void UpdateMultiplier();
 };

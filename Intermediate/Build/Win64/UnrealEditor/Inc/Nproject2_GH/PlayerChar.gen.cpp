@@ -419,10 +419,6 @@ void EmptyLinkFunctionForGeneratedCodePlayerChar() {}
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_MultiplierMeter_Current;
 #if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam NewProp_MultiplierMeter_IncreaseBy_MetaData[];
-#endif
-		static const UECodeGen_Private::FFloatPropertyParams NewProp_MultiplierMeter_IncreaseBy;
-#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_MeterDecrementPauseTime_MetaData[];
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_MeterDecrementPauseTime;
@@ -898,9 +894,9 @@ void EmptyLinkFunctionForGeneratedCodePlayerChar() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APlayerChar_Statics::NewProp_MultiplierMeter_NeededForIncrease_MetaData[] = {
 		{ "Category", "PlayerChar" },
-		{ "Comment", "//Score multiplier meter (required for next multiplier increase, current and how much to increase by, respectively)\n" },
+		{ "Comment", "//Score multiplier meter (required for next multiplier increase and current, respectively)\n" },
 		{ "ModuleRelativePath", "PlayerChar.h" },
-		{ "ToolTip", "Score multiplier meter (required for next multiplier increase, current and how much to increase by, respectively)" },
+		{ "ToolTip", "Score multiplier meter (required for next multiplier increase and current, respectively)" },
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_APlayerChar_Statics::NewProp_MultiplierMeter_NeededForIncrease = { "MultiplierMeter_NeededForIncrease", nullptr, (EPropertyFlags)0x0010000000010005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APlayerChar, MultiplierMeter_NeededForIncrease), METADATA_PARAMS(Z_Construct_UClass_APlayerChar_Statics::NewProp_MultiplierMeter_NeededForIncrease_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APlayerChar_Statics::NewProp_MultiplierMeter_NeededForIncrease_MetaData)) };
@@ -911,13 +907,6 @@ void EmptyLinkFunctionForGeneratedCodePlayerChar() {}
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_APlayerChar_Statics::NewProp_MultiplierMeter_Current = { "MultiplierMeter_Current", nullptr, (EPropertyFlags)0x0010000000020005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APlayerChar, MultiplierMeter_Current), METADATA_PARAMS(Z_Construct_UClass_APlayerChar_Statics::NewProp_MultiplierMeter_Current_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APlayerChar_Statics::NewProp_MultiplierMeter_Current_MetaData)) };
-#if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APlayerChar_Statics::NewProp_MultiplierMeter_IncreaseBy_MetaData[] = {
-		{ "Category", "PlayerChar" },
-		{ "ModuleRelativePath", "PlayerChar.h" },
-	};
-#endif
-	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_APlayerChar_Statics::NewProp_MultiplierMeter_IncreaseBy = { "MultiplierMeter_IncreaseBy", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APlayerChar, MultiplierMeter_IncreaseBy), METADATA_PARAMS(Z_Construct_UClass_APlayerChar_Statics::NewProp_MultiplierMeter_IncreaseBy_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APlayerChar_Statics::NewProp_MultiplierMeter_IncreaseBy_MetaData)) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APlayerChar_Statics::NewProp_MeterDecrementPauseTime_MetaData[] = {
 		{ "Category", "PlayerChar" },
@@ -1033,7 +1022,6 @@ void EmptyLinkFunctionForGeneratedCodePlayerChar() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerChar_Statics::NewProp_ScoreMultiplier_ChangeBy,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerChar_Statics::NewProp_MultiplierMeter_NeededForIncrease,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerChar_Statics::NewProp_MultiplierMeter_Current,
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerChar_Statics::NewProp_MultiplierMeter_IncreaseBy,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerChar_Statics::NewProp_MeterDecrementPauseTime,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerChar_Statics::NewProp_bResetMeter,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerChar_Statics::NewProp_MeterSpeedCoeff,
@@ -1078,9 +1066,9 @@ void EmptyLinkFunctionForGeneratedCodePlayerChar() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerChar_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_APlayerChar, APlayerChar::StaticClass, TEXT("APlayerChar"), &Z_Registration_Info_UClass_APlayerChar, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APlayerChar), 71067427U) },
+		{ Z_Construct_UClass_APlayerChar, APlayerChar::StaticClass, TEXT("APlayerChar"), &Z_Registration_Info_UClass_APlayerChar, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APlayerChar), 1828296795U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerChar_h_2496672430(TEXT("/Script/Nproject2_GH"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerChar_h_815417504(TEXT("/Script/Nproject2_GH"),
 		Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerChar_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerChar_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

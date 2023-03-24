@@ -159,6 +159,7 @@ void AEnemy_FlyingTurret::MainBehaviour(float DeltaTime)
 void AEnemy_FlyingTurret::DamageFunction(float Damage)
 {
 	Health_Current -= Damage;
+	UpdateMultiplier();
 	if(Player)
 	{
 		Player->MeterDecrementPauseTime = FlashTime_Max;

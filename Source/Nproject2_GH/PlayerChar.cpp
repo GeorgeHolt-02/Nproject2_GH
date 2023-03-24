@@ -133,7 +133,6 @@ APlayerChar::APlayerChar()
 
 	MultiplierMeter_NeededForIncrease = 6.0f;
 	MultiplierMeter_Current = 0.0f;
-	MultiplierMeter_IncreaseBy = 2.0f;
 
 	MeterDecrementPauseTime = 0.0f;
 

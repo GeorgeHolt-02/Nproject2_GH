@@ -20,6 +20,7 @@ ABaseEnemy::ABaseEnemy()
 	EnemyCollider->SetCollisionObjectType(ECC_GameTraceChannel9);
 
 	PointsToAward = 50;
+	MeterToAward = 2.0f;
 	
 	Health_Max = 3.0f;
 	Health_Current = Health_Max;
@@ -154,6 +155,7 @@ void ABaseEnemy::MainBehaviour(float DeltaTime)
 void ABaseEnemy::DamageFunction(float Damage)
 {
 	Health_Current -= Damage;
+	UpdateMultiplier();
 	if(Player)
 	{
 		Player->MeterDecrementPauseTime += FlashTime_Max;
@@ -180,45 +182,11 @@ void ABaseEnemy::Death()
 		
 		if(Player)
 		{
-			Player->MultiplierMeter_Current += Player->MultiplierMeter_IncreaseBy;
-			if (Player->MultiplierMeter_Current >= Player->MultiplierMeter_NeededForIncrease)
-			{
-				if(Player->ScoreMultiplier_Current < Player->ScoreMultiplier_Max)
-				{
-					float i;
-					for(i = Player->MultiplierMeter_NeededForIncrease;
-						i <= Player->MultiplierMeter_Current;
-						i += Player->MultiplierMeter_NeededForIncrease)
-					{
-						Player->ScoreMultiplier_Current += Player->ScoreMultiplier_ChangeBy;
-					}
-					if(Player->ScoreMultiplier_Current >= Player->ScoreMultiplier_Max)
-					{
-						Player->ScoreMultiplier_Current = Player->ScoreMultiplier_Max;
-						Player->MultiplierMeter_Current = Player->MultiplierMeter_NeededForIncrease;
-					}
-					else
-					{
-						Player->MultiplierMeter_Current -= (i - Player->MultiplierMeter_NeededForIncrease);
-					}
-				}
-				else
-				{
-					Player->MultiplierMeter_Current = Player->MultiplierMeter_NeededForIncrease;
-				}
-			}
-		}
-
-		if(Player)
-		{
 			if(Player->PlayerHUD)
 			{
 				Player->PlayerHUD->SetHighScore(FMath::Max(CurrentGameInstance->PlayerScore, Player->HighScore));
 				Player->PlayerHUD->SetPlayerScore(CurrentGameInstance->PlayerScore);
-				Player->PlayerHUD->SetMultiplier(Player->ScoreMultiplier_Current);
-				Player->PlayerHUD->SetMultiplierBuildUp(Player->MultiplierMeter_Current, Player->MultiplierMeter_NeededForIncrease);
 				Player->PlayerHUD->SetLives(CurrentGameInstance->PlayerLives_Current);
-				Player->PlayerHUD->SetMultiplierCanvasOpacity(Player->ScoreMultiplier_Current);
 			}
 		}
 		CurrentGameInstance->EnemyNum--;
@@ -263,4 +231,50 @@ void ABaseEnemy::OnOverlapStart(UPrimitiveComponent* OverlappedComponent, AActor
 void ABaseEnemy::OnDeath(AActor* DestroyedActor)
 {
 	
+}
+
+void ABaseEnemy::UpdateMultiplier()
+{
+	if(Player)
+	{
+		Player->MultiplierMeter_Current += MeterToAward;
+		if (Player->MultiplierMeter_Current >= Player->MultiplierMeter_NeededForIncrease)
+		{
+			if(Player->ScoreMultiplier_Current < Player->ScoreMultiplier_Max)
+			{
+				float i;
+				for(i = Player->MultiplierMeter_NeededForIncrease;
+					i <= Player->MultiplierMeter_Current && Player->ScoreMultiplier_Current < Player->ScoreMultiplier_Max;
+					i += Player->MultiplierMeter_NeededForIncrease)
+				{
+					Player->ScoreMultiplier_Current = FMath::Clamp(Player->ScoreMultiplier_Current + Player->ScoreMultiplier_ChangeBy, 1.0f, Player->ScoreMultiplier_Max);
+				}
+				// if(Player->ScoreMultiplier_Current >= Player->ScoreMultiplier_Max)
+				// {
+				// 	Player->ScoreMultiplier_Current = Player->ScoreMultiplier_Max;
+				// 	Player->MultiplierMeter_Current = Player->MultiplierMeter_NeededForIncrease;
+				// }
+				// else
+				// {
+				// 	Player->MultiplierMeter_Current -= (i - Player->MultiplierMeter_NeededForIncrease);
+				// }
+				Player->MultiplierMeter_Current -= (i - Player->MultiplierMeter_NeededForIncrease);
+				if(Player->MultiplierMeter_Current >= Player->MultiplierMeter_NeededForIncrease)
+				{
+					Player->MultiplierMeter_Current = Player->MultiplierMeter_NeededForIncrease;
+				}
+			}
+			else
+			{
+				Player->MultiplierMeter_Current = Player->MultiplierMeter_NeededForIncrease;
+			}
+		}
+
+		if(Player->PlayerHUD)
+		{
+			Player->PlayerHUD->SetMultiplier(Player->ScoreMultiplier_Current);
+			Player->PlayerHUD->SetMultiplierBuildUp(Player->MultiplierMeter_Current, Player->MultiplierMeter_NeededForIncrease);
+			Player->PlayerHUD->SetMultiplierCanvasOpacity(Player->ScoreMultiplier_Current);
+		}
+	}
 }
