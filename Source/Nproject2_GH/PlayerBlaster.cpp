@@ -14,13 +14,15 @@ APlayerBlaster::APlayerBlaster()
 
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	SetRootComponent(Mesh);
+
+	MyChar = nullptr;
 }
 
 // Called when the game starts or when spawned
 void APlayerBlaster::BeginPlay()
 {
 	Super::BeginPlay();
-	APlayerChar* MyChar = Cast<APlayerChar>(GetWorld()->GetFirstPlayerController()->GetPawn());
+	MyChar = Cast<APlayerChar>(GetWorld()->GetFirstPlayerController()->GetPawn());
 	if (MyChar)
 	{
 		const USkeletalMeshSocket* Socket = MyChar->PlayerMesh->GetSocketByName("BlasterSocket");
@@ -29,6 +31,10 @@ void APlayerBlaster::BeginPlay()
 			Socket->AttachActor(this, MyChar->PlayerMesh);
 		}
 	}
+	else
+	{
+		Mesh->SetSimulatePhysics(true);
+	}
 }
 
 // Called every frame
@@ -36,5 +42,9 @@ void APlayerBlaster::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	if(!MyChar)
+	{
+		Mesh->SetSimulatePhysics(true);
+	}
 }
 

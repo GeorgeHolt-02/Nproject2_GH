@@ -20,7 +20,7 @@ void UWidget_GameOver::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	RecordIndex = NULL;
+	RecordIndex = 0;
 	PlayerRecord = nullptr;
 
 	GameResetTimer = 3.0f;
@@ -47,40 +47,38 @@ void UWidget_GameOver::NativeConstruct()
 			FRecord NewRecord;
 			NewRecord.Name = FString("AAA");
 			NewRecord.Score = CurrentGameInstance->PlayerScore;
-			TopTenScores.Insert(NewRecord, i);
+			UE_LOG(LogTemp, Warning, TEXT("Placed at index %i"), TopTenScores.Insert(NewRecord, i));
+			UE_LOG(LogTemp, Warning, TEXT("At index %i"), i);
 			if(TopTenScores.Num() > 10)
 			{
 				TopTenScores.Pop(true);
 			}
 			RecordIndex = i;
+			UE_LOG(LogTemp, Warning, TEXT("Record index at %i"), RecordIndex);
 		}
 	}
 
 	if(RecordTextRef)
 	{
-		for(int i = RecordBox->GetChildrenCount(); i < 10; i++)
+		for(int i = 0; i < 10; i++)
 		{
 			UTextWidget* RecordWidget = CreateWidget<UTextWidget>(this, RecordTextRef);
 			RecordBox->AddChildToVerticalBox(RecordWidget);
 			RecordWidget->SetData((i+1), TopTenScores[i].Name, TopTenScores[i].Score);
-			if(RecordIndex != NULL)
-			{
-				if(i == RecordIndex)
-				{
-					PlayerRecord = RecordWidget;
-					if(i <= 0)
-					{
-						PlayerRecord->Text->SetColorAndOpacity(FSlateColor(FColor::Yellow));
-					}
-					else
-					{
-						PlayerRecord->Text->SetColorAndOpacity(FSlateColor(FColor::Green));
-					}
-				}
-			}
+			//UE_LOG(LogTemp, Warning, TEXT("Widget index at %i"), i);
 		}
 	}
 
+	PlayerRecord = Cast<UTextWidget>(RecordBox->GetAllChildren()[RecordIndex]);
+	if(RecordIndex <= 0)
+	{
+		PlayerRecord->Text->SetColorAndOpacity(FSlateColor(FColor::Yellow));
+	}
+	else
+	{
+		PlayerRecord->Text->SetColorAndOpacity(FSlateColor(FColor::Green));
+	}
+	
 	if(InitialRef)
 	{
 		for(int i = InitialsBox->GetChildrenCount(); i < 3; i++)
@@ -124,7 +122,7 @@ void UWidget_GameOver::NativeConstruct()
 void UWidget_GameOver::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 {
 	Super::NativeTick(MyGeometry, InDeltaTime);
-
+	
 	if(PlayerRecord)
 	{
 		PlayerRecord->Initials = FString("");
@@ -185,32 +183,35 @@ void UWidget_GameOver::FinishEntry()
 	UMySaveGame* LeaderboardsSave = Cast<UMySaveGame>(UGameplayStatics::LoadGameFromSlot(FString("TestSaveSlot"), 0));
 	if(LeaderboardsSave)
 	{
-		FRecord NewRecord;
-		NewRecord.Name = PlayerRecord->Initials;
-		NewRecord.Score = PlayerRecord->Score;
-		LeaderboardsSave->TopTenScores.Insert(NewRecord, RecordIndex);
-		if(LeaderboardsSave->TopTenScores.Num() > 10)
+		if(PlayerRecord)
 		{
-			LeaderboardsSave->TopTenScores.Pop(true);
-		}
-		if (LeaderboardsSave->PlayerPB == NULL || NewRecord.Score > LeaderboardsSave->PlayerPB)
-		{
-			LeaderboardsSave->PlayerPB = NewRecord.Score;
-		}
+			FRecord NewRecord;
+			NewRecord.Name = PlayerRecord->Initials;
+			NewRecord.Score = PlayerRecord->Score;
+			LeaderboardsSave->TopTenScores.Insert(NewRecord, RecordIndex);
+			if(LeaderboardsSave->TopTenScores.Num() > 10)
+			{
+				LeaderboardsSave->TopTenScores.Pop(true);
+			}
+			if (NewRecord.Score > LeaderboardsSave->TopTenScores[0].Score)
+			{
+				LeaderboardsSave->PlayerPB = NewRecord.Score;
+			}
 		
-		if(CurrentGameInstance)
-		{
-			CurrentGameInstance->TopTenScores.Insert(NewRecord, RecordIndex);
-			if(CurrentGameInstance->TopTenScores.Num() > 10)
+			if(CurrentGameInstance)
 			{
-				CurrentGameInstance->TopTenScores.Pop(true);
+				CurrentGameInstance->TopTenScores.Insert(NewRecord, RecordIndex);
+				if(CurrentGameInstance->TopTenScores.Num() > 10)
+				{
+					CurrentGameInstance->TopTenScores.Pop(true);
+				}
+				if (NewRecord.Score > CurrentGameInstance->TopTenScores[0].Score)
+				{
+					CurrentGameInstance->PlayerPB = NewRecord.Score;
+				}
 			}
-			if (CurrentGameInstance->PlayerPB == NULL || NewRecord.Score > CurrentGameInstance->PlayerPB)
-			{
-				CurrentGameInstance->PlayerPB = NewRecord.Score;
-			}
+			UGameplayStatics::SaveGameToSlot(LeaderboardsSave, LeaderboardsSave->SaveSlotName, LeaderboardsSave->UserIndex);
 		}
-		UGameplayStatics::SaveGameToSlot(LeaderboardsSave, LeaderboardsSave->SaveSlotName, LeaderboardsSave->UserIndex);
 	}
 	
 	bResetTimerActive = true;

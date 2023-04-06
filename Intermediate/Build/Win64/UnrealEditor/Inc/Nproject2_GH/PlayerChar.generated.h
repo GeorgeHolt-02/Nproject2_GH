@@ -20,6 +20,8 @@ struct FHitResult;
 #define FID_Nproject2_GH_Source_Nproject2_GH_PlayerChar_h_14_RPC_WRAPPERS \
  \
 	DECLARE_FUNCTION(execOnDeath); \
+	DECLARE_FUNCTION(execStartRestartTimer); \
+	DECLARE_FUNCTION(execPlayerDeath); \
 	DECLARE_FUNCTION(execOnHit); \
 	DECLARE_FUNCTION(execTakeHeavyDamage);
 
@@ -27,6 +29,8 @@ struct FHitResult;
 #define FID_Nproject2_GH_Source_Nproject2_GH_PlayerChar_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execOnDeath); \
+	DECLARE_FUNCTION(execStartRestartTimer); \
+	DECLARE_FUNCTION(execPlayerDeath); \
 	DECLARE_FUNCTION(execOnHit); \
 	DECLARE_FUNCTION(execTakeHeavyDamage);
 

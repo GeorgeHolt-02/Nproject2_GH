@@ -226,6 +226,10 @@ public:
 	TSubclassOf<class UWidget_PlayerHUD> PlayerHUDref;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	UWidget_PlayerHUD* PlayerHUD;
+
+	//Level restart timer handle
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	FTimerHandle Handle_RestartTimer;
 	
 protected:
 	
@@ -255,7 +259,7 @@ protected:
 	bool bCanShoot();
 
 	//Destroys player if health is at 0 or lower (or if the player is out of bounds)
-	void PlayerDeath();
+	void PlayerFallDeath();
 	
 	//Destroys projectiles that are far-away enough from the player
 	void ShotCleanup();
@@ -303,6 +307,14 @@ public:
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 		FVector NormalImpulse, const FHitResult& HitResult);
+
+	//Player death functionality
+	UFUNCTION()
+	void PlayerDeath();
+	
+	//Level restart timer
+	UFUNCTION()
+	void StartRestartTimer();
 	
 	// Restarts the level when the player dies
 	UFUNCTION()

@@ -14,6 +14,7 @@ void EmptyLinkFunctionForGeneratedCodePlayerBlaster() {}
 	ENGINE_API UClass* Z_Construct_UClass_AActor();
 	UPackage* Z_Construct_UPackage__Script_Nproject2_GH();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
+	NPROJECT2_GH_API UClass* Z_Construct_UClass_APlayerChar_NoRegister();
 // End Cross Module References
 	void APlayerBlaster::StaticRegisterNativesAPlayerBlaster()
 	{
@@ -33,6 +34,10 @@ void EmptyLinkFunctionForGeneratedCodePlayerBlaster() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_Mesh_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_Mesh;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_MyChar_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_MyChar;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -57,8 +62,18 @@ void EmptyLinkFunctionForGeneratedCodePlayerBlaster() {}
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APlayerBlaster_Statics::NewProp_Mesh = { "Mesh", nullptr, (EPropertyFlags)0x001000000008000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APlayerBlaster, Mesh), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APlayerBlaster_Statics::NewProp_Mesh_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APlayerBlaster_Statics::NewProp_Mesh_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APlayerBlaster_Statics::NewProp_MyChar_MetaData[] = {
+		{ "Category", "PlayerBlaster" },
+		{ "Comment", "//Player character pointer\n" },
+		{ "ModuleRelativePath", "PlayerBlaster.h" },
+		{ "ToolTip", "Player character pointer" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APlayerBlaster_Statics::NewProp_MyChar = { "MyChar", nullptr, (EPropertyFlags)0x0020080000020015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APlayerBlaster, MyChar), Z_Construct_UClass_APlayerChar_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APlayerBlaster_Statics::NewProp_MyChar_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APlayerBlaster_Statics::NewProp_MyChar_MetaData)) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_APlayerBlaster_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerBlaster_Statics::NewProp_Mesh,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerBlaster_Statics::NewProp_MyChar,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_APlayerBlaster_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<APlayerBlaster>::IsAbstract,
@@ -96,9 +111,9 @@ void EmptyLinkFunctionForGeneratedCodePlayerBlaster() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerBlaster_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_APlayerBlaster, APlayerBlaster::StaticClass, TEXT("APlayerBlaster"), &Z_Registration_Info_UClass_APlayerBlaster, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APlayerBlaster), 2814624555U) },
+		{ Z_Construct_UClass_APlayerBlaster, APlayerBlaster::StaticClass, TEXT("APlayerBlaster"), &Z_Registration_Info_UClass_APlayerBlaster, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APlayerBlaster), 1027249917U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerBlaster_h_735565835(TEXT("/Script/Nproject2_GH"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerBlaster_h_2915686670(TEXT("/Script/Nproject2_GH"),
 		Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerBlaster_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerBlaster_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

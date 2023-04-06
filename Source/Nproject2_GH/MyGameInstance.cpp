@@ -16,6 +16,7 @@ UMyGameInstance::UMyGameInstance()
 	NextLevelIndex = 1;
 	
 	EnemyNum = 0;
+	LevelEnemyNum = 0;
 	
 	bCanLoadNextLevel = false;
 	bCanRestart = true;

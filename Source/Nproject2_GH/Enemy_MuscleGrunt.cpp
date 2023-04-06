@@ -296,21 +296,33 @@ void AEnemy_MuscleGrunt::FallSpeedCap()
 
 void AEnemy_MuscleGrunt::FallDeath()
 {
-	if(GetActorLocation().Z > 5000.0f)
+	if(GetActorLocation().Z > 5000.0f || GetActorLocation().Z < -5000.0f)
 	{
 		if(CurrentGameInstance)
 		{
-			CurrentGameInstance->EnemyNum--;
-			UE_LOG(LogTemp, Warning, TEXT("Enemy Num2: %i"), CurrentGameInstance->EnemyNum);
-		}
-		Destroy();
-	}
-	if(GetActorLocation().Z < -5000.0f)
-	{
-		if(CurrentGameInstance)
-		{
-			CurrentGameInstance->EnemyNum--;
-			UE_LOG(LogTemp, Warning, TEXT("Enemy Num2: %i"), CurrentGameInstance->EnemyNum);
+			CurrentGameInstance->EnemyNum = FMath::Clamp(CurrentGameInstance->EnemyNum - 1, 0, INFINITY);
+			if(CurrentGameInstance->EnemyNum <= 0)
+			{
+				if(CurrentGameInstance->Levels.IsValidIndex(CurrentGameInstance->NextLevelIndex))
+				{
+					CurrentGameInstance->LoadSpecifiedLevel(CurrentGameInstance->Levels[CurrentGameInstance->NextLevelIndex]);
+					CurrentGameInstance->NextLevelIndex++;
+					CurrentGameInstance->bCanLoadNextLevel = false;
+				}
+				else
+				{
+					if(CurrentGameInstance->bCanRestart)
+					{
+						if(CurrentGameInstance->Levels.IsValidIndex(0))
+						{
+							CurrentGameInstance->LoadSpecifiedLevel(CurrentGameInstance->Levels[0]);
+							CurrentGameInstance->NextLevelIndex = 1;
+							CurrentGameInstance->bCanLoadNextLevel = false;
+						}
+					}
+				}
+				CurrentGameInstance->EnemyNum = CurrentGameInstance->LevelEnemyNum;
+			}
 		}
 		Destroy();
 	}
@@ -348,12 +360,7 @@ void AEnemy_MuscleGrunt::OnOverlapStart(UPrimitiveComponent* OverlappedComponent
 			{
 				if((!MyPlayer->bPositioningSweep) && (!bPositioningSweep))
 				{
-					if(CurrentGameInstance)
-					{
-						CurrentGameInstance->EnemyNum = 0;
-						CurrentGameInstance->bCanLoadNextLevel = true;
-					}
-					MyPlayer->Destroy();
+					MyPlayer->PlayerDeath();
 				}
 			}
 		}

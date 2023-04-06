@@ -56,9 +56,13 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	int NextLevelIndex;
 	
-	/** Total number of enemies to fight in the current level */
+	/** Total number of enemies left in the current level */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	int EnemyNum;
+
+	/** Total number of enemies in the current level */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	int LevelEnemyNum;
 	
 	/** Whether or not to load next level when EnemyNum <= 0 */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)

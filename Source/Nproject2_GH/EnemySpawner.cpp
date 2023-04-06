@@ -48,6 +48,7 @@ void AEnemySpawner::BeginPlay()
 		{
 			CurrentGameInstance->EnemyNum += Waves[i]->GetNumberOfSplinePoints();
 		}
+		CurrentGameInstance->LevelEnemyNum = CurrentGameInstance->EnemyNum;
 	}
 
 	SpawnEnemies();
@@ -62,35 +63,31 @@ void AEnemySpawner::Tick(float DeltaTime)
 
 	UE_LOG(LogTemp, Warning, TEXT("%i"), CurrentGameInstance->EnemyNum);
 	
-	if(CurrentGameInstance)
-	{
-		if(CurrentGameInstance->EnemyNum <= 0)
-		{
-			if(CurrentGameInstance->Levels.IsValidIndex(CurrentGameInstance->NextLevelIndex))
-			{
-				CurrentGameInstance->LoadSpecifiedLevel(CurrentGameInstance->Levels[CurrentGameInstance->NextLevelIndex]);
-				CurrentGameInstance->NextLevelIndex++;
-				CurrentGameInstance->bCanLoadNextLevel = false;
-			}
-			else
-			{
-				if(CurrentGameInstance->bCanRestart)
-				{
-					if(CurrentGameInstance->Levels.IsValidIndex(0))
-					{
-						CurrentGameInstance->LoadSpecifiedLevel(CurrentGameInstance->Levels[0]);
-						CurrentGameInstance->NextLevelIndex = 1;
-						CurrentGameInstance->bCanLoadNextLevel = false;
-					}
-				}
-			}
-			CurrentGameInstance->EnemyNum = 0;
-			for(int i = 0; i < Waves.Num(); i++)
-			{
-				CurrentGameInstance->EnemyNum += Waves[i]->GetNumberOfSplinePoints();
-			}
-		}
-	}
+	// if(CurrentGameInstance)
+	// {
+		// if(CurrentGameInstance->EnemyNum <= 0)
+		// {
+		// 	if(CurrentGameInstance->Levels.IsValidIndex(CurrentGameInstance->NextLevelIndex))
+		// 	{
+		// 		CurrentGameInstance->LoadSpecifiedLevel(CurrentGameInstance->Levels[CurrentGameInstance->NextLevelIndex]);
+		// 		CurrentGameInstance->NextLevelIndex++;
+		// 		CurrentGameInstance->bCanLoadNextLevel = false;
+		// 	}
+		// 	else
+		// 	{
+		// 		if(CurrentGameInstance->bCanRestart)
+		// 		{
+		// 			if(CurrentGameInstance->Levels.IsValidIndex(0))
+		// 			{
+		// 				CurrentGameInstance->LoadSpecifiedLevel(CurrentGameInstance->Levels[0]);
+		// 				CurrentGameInstance->NextLevelIndex = 1;
+		// 				CurrentGameInstance->bCanLoadNextLevel = false;
+		// 			}
+		// 		}
+		// 	}
+		// 	CurrentGameInstance->EnemyNum = CurrentGameInstance->LevelEnemyNum;
+		// }
+	// }
 	
 	SpawnTimer(DeltaTime);
 }

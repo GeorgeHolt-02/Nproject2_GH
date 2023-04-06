@@ -189,7 +189,29 @@ void ABaseEnemy::Death()
 				Player->PlayerHUD->SetLives(CurrentGameInstance->PlayerLives_Current);
 			}
 		}
-		CurrentGameInstance->EnemyNum--;
+		CurrentGameInstance->EnemyNum = FMath::Clamp(CurrentGameInstance->EnemyNum - 1, 0, INFINITY);
+		if(CurrentGameInstance->EnemyNum <= 0)
+		{
+			if(CurrentGameInstance->Levels.IsValidIndex(CurrentGameInstance->NextLevelIndex))
+			{
+				CurrentGameInstance->LoadSpecifiedLevel(CurrentGameInstance->Levels[CurrentGameInstance->NextLevelIndex]);
+				CurrentGameInstance->NextLevelIndex++;
+				CurrentGameInstance->bCanLoadNextLevel = false;
+			}
+			else
+			{
+				if(CurrentGameInstance->bCanRestart)
+				{
+					if(CurrentGameInstance->Levels.IsValidIndex(0))
+					{
+						CurrentGameInstance->LoadSpecifiedLevel(CurrentGameInstance->Levels[0]);
+						CurrentGameInstance->NextLevelIndex = 1;
+						CurrentGameInstance->bCanLoadNextLevel = false;
+					}
+				}
+			}
+			CurrentGameInstance->EnemyNum = CurrentGameInstance->LevelEnemyNum;
+		}
 		
 		UE_LOG(LogTemp, Warning, TEXT("Enemy Num2: %i"), CurrentGameInstance->EnemyNum);
 	}
@@ -208,12 +230,7 @@ void ABaseEnemy::OnOverlapStart(UPrimitiveComponent* OverlappedComponent, AActor
 			{
 				if(!MyPlayer->bPositioningSweep)
 				{
-					if(CurrentGameInstance)
-					{
-						CurrentGameInstance->EnemyNum = 0;
-						CurrentGameInstance->bCanLoadNextLevel = true;
-					}
-					MyPlayer->Destroy();
+					MyPlayer->PlayerDeath();
 				}
 			}
 		}

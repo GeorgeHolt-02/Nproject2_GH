@@ -201,6 +201,10 @@ void EmptyLinkFunctionForGeneratedCodeMyGameInstance() {}
 #endif
 		static const UECodeGen_Private::FUnsizedIntPropertyParams NewProp_EnemyNum;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_LevelEnemyNum_MetaData[];
+#endif
+		static const UECodeGen_Private::FUnsizedIntPropertyParams NewProp_LevelEnemyNum;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_bCanLoadNextLevel_MetaData[];
 #endif
 		static void NewProp_bCanLoadNextLevel_SetBit(void* Obj);
@@ -333,12 +337,21 @@ void EmptyLinkFunctionForGeneratedCodeMyGameInstance() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMyGameInstance_Statics::NewProp_EnemyNum_MetaData[] = {
 		{ "Category", "MyGameInstance" },
-		{ "Comment", "/** Total number of enemies to fight in the current level */" },
+		{ "Comment", "/** Total number of enemies left in the current level */" },
 		{ "ModuleRelativePath", "MyGameInstance.h" },
-		{ "ToolTip", "Total number of enemies to fight in the current level" },
+		{ "ToolTip", "Total number of enemies left in the current level" },
 	};
 #endif
 	const UECodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_UMyGameInstance_Statics::NewProp_EnemyNum = { "EnemyNum", nullptr, (EPropertyFlags)0x0010000000020005, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMyGameInstance, EnemyNum), METADATA_PARAMS(Z_Construct_UClass_UMyGameInstance_Statics::NewProp_EnemyNum_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMyGameInstance_Statics::NewProp_EnemyNum_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMyGameInstance_Statics::NewProp_LevelEnemyNum_MetaData[] = {
+		{ "Category", "MyGameInstance" },
+		{ "Comment", "/** Total number of enemies in the current level */" },
+		{ "ModuleRelativePath", "MyGameInstance.h" },
+		{ "ToolTip", "Total number of enemies in the current level" },
+	};
+#endif
+	const UECodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_UMyGameInstance_Statics::NewProp_LevelEnemyNum = { "LevelEnemyNum", nullptr, (EPropertyFlags)0x0010000000020015, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMyGameInstance, LevelEnemyNum), METADATA_PARAMS(Z_Construct_UClass_UMyGameInstance_Statics::NewProp_LevelEnemyNum_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMyGameInstance_Statics::NewProp_LevelEnemyNum_MetaData)) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMyGameInstance_Statics::NewProp_bCanLoadNextLevel_MetaData[] = {
 		{ "Category", "MyGameInstance" },
@@ -406,6 +419,7 @@ void EmptyLinkFunctionForGeneratedCodeMyGameInstance() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMyGameInstance_Statics::NewProp_Levels,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMyGameInstance_Statics::NewProp_NextLevelIndex,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMyGameInstance_Statics::NewProp_EnemyNum,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMyGameInstance_Statics::NewProp_LevelEnemyNum,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMyGameInstance_Statics::NewProp_bCanLoadNextLevel,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMyGameInstance_Statics::NewProp_bCanRestart,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMyGameInstance_Statics::NewProp_SaveGameBP,
@@ -449,9 +463,9 @@ void EmptyLinkFunctionForGeneratedCodeMyGameInstance() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_MyGameInstance_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UMyGameInstance, UMyGameInstance::StaticClass, TEXT("UMyGameInstance"), &Z_Registration_Info_UClass_UMyGameInstance, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UMyGameInstance), 612498699U) },
+		{ Z_Construct_UClass_UMyGameInstance, UMyGameInstance::StaticClass, TEXT("UMyGameInstance"), &Z_Registration_Info_UClass_UMyGameInstance, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UMyGameInstance), 2338340658U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_MyGameInstance_h_3005699108(TEXT("/Script/Nproject2_GH"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_MyGameInstance_h_271529729(TEXT("/Script/Nproject2_GH"),
 		Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_MyGameInstance_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_MyGameInstance_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

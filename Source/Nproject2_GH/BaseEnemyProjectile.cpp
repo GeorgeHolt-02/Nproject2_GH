@@ -53,12 +53,7 @@ void ABaseEnemyProjectile::OnOverlapStart(UPrimitiveComponent* OverlappedCompone
 		{
 			if(!MyPlayer->bPositioningSweep)
 			{
-				if(CurrentGameInstance)
-				{
-					CurrentGameInstance->EnemyNum = 0;
-					CurrentGameInstance->bCanLoadNextLevel = true;
-				}
-				MyPlayer->Destroy();
+				MyPlayer->PlayerDeath();
 			}
 		}
 	}

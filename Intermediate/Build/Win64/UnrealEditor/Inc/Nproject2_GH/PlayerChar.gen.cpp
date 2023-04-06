@@ -31,6 +31,7 @@ void EmptyLinkFunctionForGeneratedCodePlayerChar() {}
 	NPROJECT2_GH_API UClass* Z_Construct_UClass_UMyGameInstance_NoRegister();
 	NPROJECT2_GH_API UClass* Z_Construct_UClass_UWidget_GameOver_NoRegister();
 	NPROJECT2_GH_API UClass* Z_Construct_UClass_UWidget_PlayerHUD_NoRegister();
+	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FTimerHandle();
 // End Cross Module References
 	DEFINE_FUNCTION(APlayerChar::execOnDeath)
 	{
@@ -38,6 +39,20 @@ void EmptyLinkFunctionForGeneratedCodePlayerChar() {}
 		P_FINISH;
 		P_NATIVE_BEGIN;
 		P_THIS->OnDeath(Z_Param_DestroyedActor);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(APlayerChar::execStartRestartTimer)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->StartRestartTimer();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(APlayerChar::execPlayerDeath)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->PlayerDeath();
 		P_NATIVE_END;
 	}
 	DEFINE_FUNCTION(APlayerChar::execOnHit)
@@ -66,6 +81,8 @@ void EmptyLinkFunctionForGeneratedCodePlayerChar() {}
 		static const FNameNativePtrPair Funcs[] = {
 			{ "OnDeath", &APlayerChar::execOnDeath },
 			{ "OnHit", &APlayerChar::execOnHit },
+			{ "PlayerDeath", &APlayerChar::execPlayerDeath },
+			{ "StartRestartTimer", &APlayerChar::execStartRestartTimer },
 			{ "TakeHeavyDamage", &APlayerChar::execTakeHeavyDamage },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
@@ -175,6 +192,54 @@ void EmptyLinkFunctionForGeneratedCodePlayerChar() {}
 		if (!ReturnFunction)
 		{
 			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_APlayerChar_OnHit_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_APlayerChar_PlayerDeath_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_APlayerChar_PlayerDeath_Statics::Function_MetaDataParams[] = {
+		{ "Comment", "//Player death functionality\n" },
+		{ "ModuleRelativePath", "PlayerChar.h" },
+		{ "ToolTip", "Player death functionality" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_APlayerChar_PlayerDeath_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_APlayerChar, nullptr, "PlayerDeath", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_APlayerChar_PlayerDeath_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_APlayerChar_PlayerDeath_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_APlayerChar_PlayerDeath()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_APlayerChar_PlayerDeath_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_APlayerChar_StartRestartTimer_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_APlayerChar_StartRestartTimer_Statics::Function_MetaDataParams[] = {
+		{ "Comment", "//Level restart timer\n" },
+		{ "ModuleRelativePath", "PlayerChar.h" },
+		{ "ToolTip", "Level restart timer" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_APlayerChar_StartRestartTimer_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_APlayerChar, nullptr, "StartRestartTimer", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_APlayerChar_StartRestartTimer_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_APlayerChar_StartRestartTimer_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_APlayerChar_StartRestartTimer()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_APlayerChar_StartRestartTimer_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -447,6 +512,10 @@ void EmptyLinkFunctionForGeneratedCodePlayerChar() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_PlayerHUD_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_PlayerHUD;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_Handle_RestartTimer_MetaData[];
+#endif
+		static const UECodeGen_Private::FStructPropertyParams NewProp_Handle_RestartTimer;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -458,6 +527,8 @@ void EmptyLinkFunctionForGeneratedCodePlayerChar() {}
 	const FClassFunctionLinkInfo Z_Construct_UClass_APlayerChar_Statics::FuncInfo[] = {
 		{ &Z_Construct_UFunction_APlayerChar_OnDeath, "OnDeath" }, // 3330195962
 		{ &Z_Construct_UFunction_APlayerChar_OnHit, "OnHit" }, // 4277259193
+		{ &Z_Construct_UFunction_APlayerChar_PlayerDeath, "PlayerDeath" }, // 1628672758
+		{ &Z_Construct_UFunction_APlayerChar_StartRestartTimer, "StartRestartTimer" }, // 1104560691
 		{ &Z_Construct_UFunction_APlayerChar_TakeHeavyDamage, "TakeHeavyDamage" }, // 884189298
 	};
 #if WITH_METADATA
@@ -973,6 +1044,15 @@ void EmptyLinkFunctionForGeneratedCodePlayerChar() {}
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APlayerChar_Statics::NewProp_PlayerHUD = { "PlayerHUD", nullptr, (EPropertyFlags)0x00100000000a000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APlayerChar, PlayerHUD), Z_Construct_UClass_UWidget_PlayerHUD_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APlayerChar_Statics::NewProp_PlayerHUD_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APlayerChar_Statics::NewProp_PlayerHUD_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APlayerChar_Statics::NewProp_Handle_RestartTimer_MetaData[] = {
+		{ "Category", "PlayerChar" },
+		{ "Comment", "//Level restart timer handle\n" },
+		{ "ModuleRelativePath", "PlayerChar.h" },
+		{ "ToolTip", "Level restart timer handle" },
+	};
+#endif
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_APlayerChar_Statics::NewProp_Handle_RestartTimer = { "Handle_RestartTimer", nullptr, (EPropertyFlags)0x0010000000020015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APlayerChar, Handle_RestartTimer), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(Z_Construct_UClass_APlayerChar_Statics::NewProp_Handle_RestartTimer_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APlayerChar_Statics::NewProp_Handle_RestartTimer_MetaData)) }; // 589591453
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_APlayerChar_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerChar_Statics::NewProp_CameraBoom,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerChar_Statics::NewProp_PlayerCamera,
@@ -1029,6 +1109,7 @@ void EmptyLinkFunctionForGeneratedCodePlayerChar() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerChar_Statics::NewProp_HighScore,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerChar_Statics::NewProp_PlayerHUDref,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerChar_Statics::NewProp_PlayerHUD,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerChar_Statics::NewProp_Handle_RestartTimer,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_APlayerChar_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<APlayerChar>::IsAbstract,
@@ -1066,9 +1147,9 @@ void EmptyLinkFunctionForGeneratedCodePlayerChar() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerChar_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_APlayerChar, APlayerChar::StaticClass, TEXT("APlayerChar"), &Z_Registration_Info_UClass_APlayerChar, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APlayerChar), 1828296795U) },
+		{ Z_Construct_UClass_APlayerChar, APlayerChar::StaticClass, TEXT("APlayerChar"), &Z_Registration_Info_UClass_APlayerChar, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APlayerChar), 1813925575U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerChar_h_815417504(TEXT("/Script/Nproject2_GH"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerChar_h_2483011726(TEXT("/Script/Nproject2_GH"),
 		Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerChar_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerChar_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

@@ -142,6 +142,8 @@ APlayerChar::APlayerChar()
 	
 	PlayerHUDref = nullptr;
 	PlayerHUD = nullptr;
+
+	Handle_RestartTimer;
 }
 
 // Called when the game starts or when spawned
@@ -221,7 +223,7 @@ void APlayerChar::Tick(float DeltaTime)
 
 	ShotCleanup();
 	
-	PlayerDeath();
+	PlayerFallDeath();
 
 	UpdateInvulnTimer(DeltaTime);
 
@@ -460,7 +462,7 @@ void APlayerChar::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, U
 	}
 }
 
-void APlayerChar::OnDeath(AActor* DestroyedActor)
+void APlayerChar::StartRestartTimer()
 {
 	if(CurrentGameInstance)
 	{
@@ -471,7 +473,7 @@ void APlayerChar::OnDeath(AActor* DestroyedActor)
 				CurrentGameInstance->PlayerLives_Current--;
 				if (CurrentGameInstance->bCanRestart)
 				{
-					CurrentGameInstance->LoadSpecifiedLevelByName(FName(GetWorld()->GetCurrentLevel()->GetFullName()));
+					CurrentGameInstance->LoadSpecifiedLevel(CurrentGameInstance->Levels[CurrentGameInstance->NextLevelIndex - 1]);
 				}
 			}
 			else
@@ -501,6 +503,7 @@ void APlayerChar::OnDeath(AActor* DestroyedActor)
 					CurrentGameInstance->PlayerLives_Current = CurrentGameInstance->PlayerLives_Starting;
 				}
 			}
+			CurrentGameInstance->EnemyNum = CurrentGameInstance->LevelEnemyNum;
 			CurrentGameInstance->bCanLoadNextLevel = false;
 		}
 		
@@ -511,6 +514,11 @@ void APlayerChar::OnDeath(AActor* DestroyedActor)
 		}
 	}
 	//UGameplayStatics::OpenLevel(GetWorld(), FName(GetWorld()->GetCurrentLevel()->GetFullName()), true);
+}
+
+void APlayerChar::OnDeath(AActor* DestroyedActor)
+{
+	
 }
 
 void APlayerChar::MoveForward(float Value)
@@ -643,21 +651,20 @@ bool APlayerChar::bCanShoot()
 
 void APlayerChar::PlayerDeath()
 {
-	// if(CurrentHealth <= 0)
-	// {
-	// 	Destroy();
-	// }
-	if(GetActorLocation().Z > 5000.0f)
+	if(CurrentGameInstance)
 	{
-		CurrentGameInstance->EnemyNum = 0;
 		CurrentGameInstance->bCanLoadNextLevel = true;
-		Destroy();
 	}
-	if(GetActorLocation().Z < -5000.0f)
+	//GetWorldTimerManager().SetTimer(Handle_RestartTimer, this, &APlayerChar::StartRestartTimer, 5.0f, false);
+	StartRestartTimer();
+	Destroy();
+}
+
+void APlayerChar::PlayerFallDeath()
+{
+	if(GetActorLocation().Z > 5000.0f || GetActorLocation().Z < -5000.0f)
 	{
-		CurrentGameInstance->EnemyNum = 0;
-		CurrentGameInstance->bCanLoadNextLevel = true;
-		Destroy();
+		PlayerDeath();
 	}
 }
 
