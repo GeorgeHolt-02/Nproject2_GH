@@ -13,6 +13,7 @@
 #include "Components/BoxComponent.h"
 #include "Components/InputComponent.h"
 #include "Components/SkeletalMeshComponent.h"
+#include "Engine/SkeletalMeshSocket.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -172,7 +173,7 @@ void APlayerChar::BeginPlay()
 	{
 		const FActorSpawnParameters BlasterSpawnParams;
 
-		APlayerBlaster* Blaster = (GetWorld()->SpawnActor<APlayerBlaster>(BlasterMesh, FVector(0.0f, 0.0f, 0.0f), FRotator(0.0f, 0.0f, 0.0f), BlasterSpawnParams));
+		Blaster = (GetWorld()->SpawnActor<APlayerBlaster>(BlasterMesh, FVector(0.0f, 0.0f, 0.0f), FRotator(0.0f, 0.0f, 0.0f), BlasterSpawnParams));
 	}
 	
 	OriginalZSpeed = UpVector.Z;
@@ -187,6 +188,12 @@ void APlayerChar::BeginPlay()
 		PlayerHUD = CreateWidget<UWidget_PlayerHUD>(Player_Controller, PlayerHUDref);
 		check(PlayerHUD);
 		PlayerHUD->AddToPlayerScreen();
+	}
+
+	if(PlayerHUD)
+	{
+		PlayerHUD->SetPlayerScore(CurrentGameInstance->PlayerScore);
+		PlayerHUD->SetLives(CurrentGameInstance->PlayerLives_Current);
 	}
 }
 
@@ -462,60 +469,6 @@ void APlayerChar::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, U
 	}
 }
 
-void APlayerChar::StartRestartTimer()
-{
-	if(CurrentGameInstance)
-	{
-		if(CurrentGameInstance->bCanLoadNextLevel)
-		{
-			if(CurrentGameInstance->PlayerLives_Current > 0)
-			{
-				CurrentGameInstance->PlayerLives_Current--;
-				if (CurrentGameInstance->bCanRestart)
-				{
-					CurrentGameInstance->LoadSpecifiedLevel(CurrentGameInstance->Levels[CurrentGameInstance->NextLevelIndex - 1]);
-				}
-			}
-			else
-			{
-				if(CurrentGameInstance->PlayerScore > CurrentGameInstance->TopTenScores.Last().Score)
-				{
-					if(GameOverRef)
-					{
-						CurrentGameInstance->bCanRestart = false;
-						UWidget_GameOver* GameOverWidget = CreateWidget<UWidget_GameOver>(GetWorld(), GameOverRef);
-						GameOverWidget->AddToViewport(0);
-						//UGameplayStatics::SetGamePaused(GetWorld(), true);
-					}
-				}
-				else
-				{
-					GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, FString::Printf(TEXT("GAME OVER!!")));
-
-					CurrentGameInstance->PlayerScore = 0;
-					CurrentGameInstance->ScoreSinceLastXtraLife = 0;
-					CurrentGameInstance->ScoreForXtraLives = CurrentGameInstance->ScoreForFirstXtraLife;
-					if(CurrentGameInstance->Levels.IsValidIndex(0))
-					{
-						CurrentGameInstance->LoadSpecifiedLevel(CurrentGameInstance->Levels[0]);
-						CurrentGameInstance->NextLevelIndex = 1;
-					}
-					CurrentGameInstance->PlayerLives_Current = CurrentGameInstance->PlayerLives_Starting;
-				}
-			}
-			CurrentGameInstance->EnemyNum = CurrentGameInstance->LevelEnemyNum;
-			CurrentGameInstance->bCanLoadNextLevel = false;
-		}
-		
-		if(PlayerHUD)
-		{
-			PlayerHUD->SetPlayerScore(CurrentGameInstance->PlayerScore);
-			PlayerHUD->SetLives(CurrentGameInstance->PlayerLives_Current);
-		}
-	}
-	//UGameplayStatics::OpenLevel(GetWorld(), FName(GetWorld()->GetCurrentLevel()->GetFullName()), true);
-}
-
 void APlayerChar::OnDeath(AActor* DestroyedActor)
 {
 	
@@ -654,9 +607,11 @@ void APlayerChar::PlayerDeath()
 	if(CurrentGameInstance)
 	{
 		CurrentGameInstance->bCanLoadNextLevel = true;
+		GetWorldTimerManager().SetTimer(Handle_RestartTimer, CurrentGameInstance, &UMyGameInstance::StartRestartTimer, 5.0f, false);
 	}
-	//GetWorldTimerManager().SetTimer(Handle_RestartTimer, this, &APlayerChar::StartRestartTimer, 5.0f, false);
-	StartRestartTimer();
+	Blaster->Mesh->SetCollisionObjectType(ECC_PhysicsBody);
+	Blaster->Mesh->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
+	Blaster->Mesh->SetSimulatePhysics(true);
 	Destroy();
 }
 

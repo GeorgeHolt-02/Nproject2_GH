@@ -45,9 +45,13 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	USkeletalMeshComponent* PlayerMesh;
 
-	//** Blaster mesh, to be attached to hand socket */
+	//** Blaster mesh reference */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<APlayerBlaster> BlasterMesh;
+
+	//** Blaster mesh, to be attached to hand socket */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	APlayerBlaster* Blaster;
 	
 	/** Camera movement rate */
 	//(left/right)
@@ -213,10 +217,6 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	float MeterSpeedCoeff;
 
-	// Game over widget reference
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	TSubclassOf<class UWidget_GameOver> GameOverRef;
-
 	//"High score" (Score needed to reach leaderboards, or player personal best)
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	int HighScore;
@@ -311,10 +311,6 @@ public:
 	//Player death functionality
 	UFUNCTION()
 	void PlayerDeath();
-	
-	//Level restart timer
-	UFUNCTION()
-	void StartRestartTimer();
 	
 	// Restarts the level when the player dies
 	UFUNCTION()

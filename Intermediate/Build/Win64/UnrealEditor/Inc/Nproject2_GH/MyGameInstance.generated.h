@@ -18,6 +18,7 @@ class UWorld;
 #define FID_Nproject2_GH_Source_Nproject2_GH_MyGameInstance_h_17_RPC_WRAPPERS \
  \
 	DECLARE_FUNCTION(execAddXtraLives); \
+	DECLARE_FUNCTION(execStartRestartTimer); \
 	DECLARE_FUNCTION(execLoadSpecifiedLevelByName); \
 	DECLARE_FUNCTION(execLoadSpecifiedLevel);
 
@@ -25,6 +26,7 @@ class UWorld;
 #define FID_Nproject2_GH_Source_Nproject2_GH_MyGameInstance_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execAddXtraLives); \
+	DECLARE_FUNCTION(execStartRestartTimer); \
 	DECLARE_FUNCTION(execLoadSpecifiedLevelByName); \
 	DECLARE_FUNCTION(execLoadSpecifiedLevel);
 

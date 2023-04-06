@@ -3,6 +3,8 @@
 
 #include "MyGameInstance.h"
 
+#include "Widget_GameOver.h"
+#include "Blueprint/UserWidget.h"
 #include "Kismet/GameplayStatics.h"
 
 UMyGameInstance::UMyGameInstance()
@@ -78,6 +80,54 @@ void UMyGameInstance::LoadSpecifiedLevel(TSoftObjectPtr<UWorld> Level)
 void UMyGameInstance::LoadSpecifiedLevelByName(FName LevelName)
 {
 	UGameplayStatics::OpenLevel(GetWorld(), LevelName, true);
+}
+
+void UMyGameInstance::StartRestartTimer()
+{
+	if(bCanLoadNextLevel)
+	{
+		{
+			if(PlayerLives_Current > 0)
+			{
+				PlayerLives_Current--;
+				if (bCanRestart)
+				{
+					LoadSpecifiedLevel(Levels[NextLevelIndex - 1]);
+				}
+			}
+			else
+			{
+				if(PlayerScore > TopTenScores.Last().Score)
+				{
+					if(GameOverRef)
+					{
+						bCanRestart = false;
+						UWidget_GameOver* GameOverWidget = CreateWidget<UWidget_GameOver>(GetWorld(), GameOverRef);
+						GameOverWidget->AddToViewport(0);
+						//UGameplayStatics::SetGamePaused(GetWorld(), true);
+					}
+				}
+				else
+				{
+					GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, FString::Printf(TEXT("GAME OVER!!")));
+
+					PlayerScore = 0;
+					ScoreSinceLastXtraLife = 0;
+					ScoreForXtraLives = ScoreForFirstXtraLife;
+					if(Levels.IsValidIndex(0))
+					{
+						LoadSpecifiedLevel(Levels[0]);
+						NextLevelIndex = 1;
+					}
+					PlayerLives_Current = PlayerLives_Starting;
+				}
+			}
+			EnemyNum = LevelEnemyNum;
+			bCanLoadNextLevel = false;
+		}
+		
+	}
+	//UGameplayStatics::OpenLevel(GetWorld(), FName(GetWorld()->GetCurrentLevel()->GetFullName()), true);
 }
 
 void UMyGameInstance::AddXtraLives()

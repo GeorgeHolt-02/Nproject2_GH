@@ -83,6 +83,10 @@ public:
 	//Player's personal best
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	int PlayerPB;
+
+	// Game over widget reference
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	TSubclassOf<class UWidget_GameOver> GameOverRef;
 	
 protected:
 
@@ -97,6 +101,10 @@ public:
 	//Loads the specified level by name
 	UFUNCTION()
 	void LoadSpecifiedLevelByName(FName LevelName);
+
+	//Level restart timer
+	UFUNCTION()
+	void StartRestartTimer();
 
 	//Grants the player 1-Ups based on score
 	UFUNCTION()
