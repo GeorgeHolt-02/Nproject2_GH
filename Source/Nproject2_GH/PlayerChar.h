@@ -226,10 +226,6 @@ public:
 	TSubclassOf<class UWidget_PlayerHUD> PlayerHUDref;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	UWidget_PlayerHUD* PlayerHUD;
-
-	//Level restart timer handle
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	FTimerHandle Handle_RestartTimer;
 	
 protected:
 	

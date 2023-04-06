@@ -87,6 +87,14 @@ public:
 	// Game over widget reference
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TSubclassOf<class UWidget_GameOver> GameOverRef;
+
+	//Level restart timer handle
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	FTimerHandle Handle_RestartTimer;
+	
+	//Next level load timer handle
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	FTimerHandle Handle_NextLevelTimer;
 	
 protected:
 
@@ -105,6 +113,9 @@ public:
 	//Level restart timer
 	UFUNCTION()
 	void StartRestartTimer();
+
+	UFUNCTION()
+	void StartNextLevelTimer();
 
 	//Grants the player 1-Ups based on score
 	UFUNCTION()

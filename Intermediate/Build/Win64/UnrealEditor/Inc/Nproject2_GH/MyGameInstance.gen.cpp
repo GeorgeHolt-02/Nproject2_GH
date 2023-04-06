@@ -18,12 +18,20 @@ void EmptyLinkFunctionForGeneratedCodeMyGameInstance() {}
 	NPROJECT2_GH_API UClass* Z_Construct_UClass_UMySaveGame_NoRegister();
 	NPROJECT2_GH_API UScriptStruct* Z_Construct_UScriptStruct_FRecord();
 	NPROJECT2_GH_API UClass* Z_Construct_UClass_UWidget_GameOver_NoRegister();
+	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FTimerHandle();
 // End Cross Module References
 	DEFINE_FUNCTION(UMyGameInstance::execAddXtraLives)
 	{
 		P_FINISH;
 		P_NATIVE_BEGIN;
 		P_THIS->AddXtraLives();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(UMyGameInstance::execStartNextLevelTimer)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->StartNextLevelTimer();
 		P_NATIVE_END;
 	}
 	DEFINE_FUNCTION(UMyGameInstance::execStartRestartTimer)
@@ -56,6 +64,7 @@ void EmptyLinkFunctionForGeneratedCodeMyGameInstance() {}
 			{ "AddXtraLives", &UMyGameInstance::execAddXtraLives },
 			{ "LoadSpecifiedLevel", &UMyGameInstance::execLoadSpecifiedLevel },
 			{ "LoadSpecifiedLevelByName", &UMyGameInstance::execLoadSpecifiedLevelByName },
+			{ "StartNextLevelTimer", &UMyGameInstance::execStartNextLevelTimer },
 			{ "StartRestartTimer", &UMyGameInstance::execStartRestartTimer },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
@@ -149,6 +158,28 @@ void EmptyLinkFunctionForGeneratedCodeMyGameInstance() {}
 		if (!ReturnFunction)
 		{
 			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UMyGameInstance_LoadSpecifiedLevelByName_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_UMyGameInstance_StartNextLevelTimer_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UMyGameInstance_StartNextLevelTimer_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "MyGameInstance.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UMyGameInstance_StartNextLevelTimer_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UMyGameInstance, nullptr, "StartNextLevelTimer", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UMyGameInstance_StartNextLevelTimer_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UMyGameInstance_StartNextLevelTimer_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_UMyGameInstance_StartNextLevelTimer()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UMyGameInstance_StartNextLevelTimer_Statics::FuncParams);
 		}
 		return ReturnFunction;
 	}
@@ -264,6 +295,14 @@ void EmptyLinkFunctionForGeneratedCodeMyGameInstance() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_GameOverRef_MetaData[];
 #endif
 		static const UECodeGen_Private::FClassPropertyParams NewProp_GameOverRef;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_Handle_RestartTimer_MetaData[];
+#endif
+		static const UECodeGen_Private::FStructPropertyParams NewProp_Handle_RestartTimer;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_Handle_NextLevelTimer_MetaData[];
+#endif
+		static const UECodeGen_Private::FStructPropertyParams NewProp_Handle_NextLevelTimer;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -276,6 +315,7 @@ void EmptyLinkFunctionForGeneratedCodeMyGameInstance() {}
 		{ &Z_Construct_UFunction_UMyGameInstance_AddXtraLives, "AddXtraLives" }, // 4205036381
 		{ &Z_Construct_UFunction_UMyGameInstance_LoadSpecifiedLevel, "LoadSpecifiedLevel" }, // 2190585500
 		{ &Z_Construct_UFunction_UMyGameInstance_LoadSpecifiedLevelByName, "LoadSpecifiedLevelByName" }, // 199089372
+		{ &Z_Construct_UFunction_UMyGameInstance_StartNextLevelTimer, "StartNextLevelTimer" }, // 3769677058
 		{ &Z_Construct_UFunction_UMyGameInstance_StartRestartTimer, "StartRestartTimer" }, // 1250880571
 	};
 #if WITH_METADATA
@@ -453,6 +493,24 @@ void EmptyLinkFunctionForGeneratedCodeMyGameInstance() {}
 	};
 #endif
 	const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_UMyGameInstance_Statics::NewProp_GameOverRef = { "GameOverRef", nullptr, (EPropertyFlags)0x0014000000010015, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMyGameInstance, GameOverRef), Z_Construct_UClass_UWidget_GameOver_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(Z_Construct_UClass_UMyGameInstance_Statics::NewProp_GameOverRef_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMyGameInstance_Statics::NewProp_GameOverRef_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMyGameInstance_Statics::NewProp_Handle_RestartTimer_MetaData[] = {
+		{ "Category", "MyGameInstance" },
+		{ "Comment", "//Level restart timer handle\n" },
+		{ "ModuleRelativePath", "MyGameInstance.h" },
+		{ "ToolTip", "Level restart timer handle" },
+	};
+#endif
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UMyGameInstance_Statics::NewProp_Handle_RestartTimer = { "Handle_RestartTimer", nullptr, (EPropertyFlags)0x0010000000020015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMyGameInstance, Handle_RestartTimer), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(Z_Construct_UClass_UMyGameInstance_Statics::NewProp_Handle_RestartTimer_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMyGameInstance_Statics::NewProp_Handle_RestartTimer_MetaData)) }; // 589591453
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMyGameInstance_Statics::NewProp_Handle_NextLevelTimer_MetaData[] = {
+		{ "Category", "MyGameInstance" },
+		{ "Comment", "//Next level load timer handle\n" },
+		{ "ModuleRelativePath", "MyGameInstance.h" },
+		{ "ToolTip", "Next level load timer handle" },
+	};
+#endif
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_UMyGameInstance_Statics::NewProp_Handle_NextLevelTimer = { "Handle_NextLevelTimer", nullptr, (EPropertyFlags)0x0010000000020015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMyGameInstance, Handle_NextLevelTimer), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(Z_Construct_UClass_UMyGameInstance_Statics::NewProp_Handle_NextLevelTimer_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMyGameInstance_Statics::NewProp_Handle_NextLevelTimer_MetaData)) }; // 589591453
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UMyGameInstance_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMyGameInstance_Statics::NewProp_PlayerLives_Starting,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMyGameInstance_Statics::NewProp_PlayerLives_Max,
@@ -474,6 +532,8 @@ void EmptyLinkFunctionForGeneratedCodeMyGameInstance() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMyGameInstance_Statics::NewProp_TopTenScores,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMyGameInstance_Statics::NewProp_PlayerPB,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMyGameInstance_Statics::NewProp_GameOverRef,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMyGameInstance_Statics::NewProp_Handle_RestartTimer,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UMyGameInstance_Statics::NewProp_Handle_NextLevelTimer,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_UMyGameInstance_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<UMyGameInstance>::IsAbstract,
@@ -511,9 +571,9 @@ void EmptyLinkFunctionForGeneratedCodeMyGameInstance() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_MyGameInstance_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UMyGameInstance, UMyGameInstance::StaticClass, TEXT("UMyGameInstance"), &Z_Registration_Info_UClass_UMyGameInstance, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UMyGameInstance), 3584657349U) },
+		{ Z_Construct_UClass_UMyGameInstance, UMyGameInstance::StaticClass, TEXT("UMyGameInstance"), &Z_Registration_Info_UClass_UMyGameInstance, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UMyGameInstance), 638184243U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_MyGameInstance_h_1636232492(TEXT("/Script/Nproject2_GH"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_MyGameInstance_h_594842588(TEXT("/Script/Nproject2_GH"),
 		Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_MyGameInstance_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_MyGameInstance_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

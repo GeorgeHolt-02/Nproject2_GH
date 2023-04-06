@@ -143,8 +143,6 @@ APlayerChar::APlayerChar()
 	
 	PlayerHUDref = nullptr;
 	PlayerHUD = nullptr;
-
-	Handle_RestartTimer;
 }
 
 // Called when the game starts or when spawned
@@ -607,7 +605,9 @@ void APlayerChar::PlayerDeath()
 	if(CurrentGameInstance)
 	{
 		CurrentGameInstance->bCanLoadNextLevel = true;
-		GetWorldTimerManager().SetTimer(Handle_RestartTimer, CurrentGameInstance, &UMyGameInstance::StartRestartTimer, 5.0f, false);
+		GetWorldTimerManager().ClearTimer(CurrentGameInstance->Handle_NextLevelTimer);
+		CurrentGameInstance->Handle_NextLevelTimer.Invalidate();
+		GetWorldTimerManager().SetTimer(CurrentGameInstance->Handle_RestartTimer, CurrentGameInstance, &UMyGameInstance::StartRestartTimer, 5.0f, false);
 	}
 	Blaster->Mesh->SetCollisionObjectType(ECC_PhysicsBody);
 	Blaster->Mesh->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);
@@ -617,7 +617,7 @@ void APlayerChar::PlayerDeath()
 
 void APlayerChar::PlayerFallDeath()
 {
-	if(GetActorLocation().Z > 5000.0f || GetActorLocation().Z < -5000.0f)
+	if(GetActorLocation().Z > 5000.0f || GetActorLocation().Z < -1000.0f)
 	{
 		PlayerDeath();
 	}

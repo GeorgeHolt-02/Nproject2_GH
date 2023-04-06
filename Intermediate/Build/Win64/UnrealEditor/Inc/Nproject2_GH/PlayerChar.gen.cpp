@@ -30,7 +30,6 @@ void EmptyLinkFunctionForGeneratedCodePlayerChar() {}
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector2D();
 	NPROJECT2_GH_API UClass* Z_Construct_UClass_UMyGameInstance_NoRegister();
 	NPROJECT2_GH_API UClass* Z_Construct_UClass_UWidget_PlayerHUD_NoRegister();
-	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FTimerHandle();
 // End Cross Module References
 	DEFINE_FUNCTION(APlayerChar::execOnDeath)
 	{
@@ -479,10 +478,6 @@ void EmptyLinkFunctionForGeneratedCodePlayerChar() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_PlayerHUD_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_PlayerHUD;
-#if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam NewProp_Handle_RestartTimer_MetaData[];
-#endif
-		static const UECodeGen_Private::FStructPropertyParams NewProp_Handle_RestartTimer;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -1010,15 +1005,6 @@ void EmptyLinkFunctionForGeneratedCodePlayerChar() {}
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APlayerChar_Statics::NewProp_PlayerHUD = { "PlayerHUD", nullptr, (EPropertyFlags)0x00100000000a000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APlayerChar, PlayerHUD), Z_Construct_UClass_UWidget_PlayerHUD_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APlayerChar_Statics::NewProp_PlayerHUD_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APlayerChar_Statics::NewProp_PlayerHUD_MetaData)) };
-#if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APlayerChar_Statics::NewProp_Handle_RestartTimer_MetaData[] = {
-		{ "Category", "PlayerChar" },
-		{ "Comment", "//Level restart timer handle\n" },
-		{ "ModuleRelativePath", "PlayerChar.h" },
-		{ "ToolTip", "Level restart timer handle" },
-	};
-#endif
-	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_APlayerChar_Statics::NewProp_Handle_RestartTimer = { "Handle_RestartTimer", nullptr, (EPropertyFlags)0x0010000000020015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APlayerChar, Handle_RestartTimer), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(Z_Construct_UClass_APlayerChar_Statics::NewProp_Handle_RestartTimer_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APlayerChar_Statics::NewProp_Handle_RestartTimer_MetaData)) }; // 589591453
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_APlayerChar_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerChar_Statics::NewProp_CameraBoom,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerChar_Statics::NewProp_PlayerCamera,
@@ -1075,7 +1061,6 @@ void EmptyLinkFunctionForGeneratedCodePlayerChar() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerChar_Statics::NewProp_HighScore,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerChar_Statics::NewProp_PlayerHUDref,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerChar_Statics::NewProp_PlayerHUD,
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerChar_Statics::NewProp_Handle_RestartTimer,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_APlayerChar_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<APlayerChar>::IsAbstract,
@@ -1113,9 +1098,9 @@ void EmptyLinkFunctionForGeneratedCodePlayerChar() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerChar_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_APlayerChar, APlayerChar::StaticClass, TEXT("APlayerChar"), &Z_Registration_Info_UClass_APlayerChar, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APlayerChar), 162601520U) },
+		{ Z_Construct_UClass_APlayerChar, APlayerChar::StaticClass, TEXT("APlayerChar"), &Z_Registration_Info_UClass_APlayerChar, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APlayerChar), 1385612579U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerChar_h_1393077263(TEXT("/Script/Nproject2_GH"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerChar_h_1578688121(TEXT("/Script/Nproject2_GH"),
 		Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerChar_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerChar_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

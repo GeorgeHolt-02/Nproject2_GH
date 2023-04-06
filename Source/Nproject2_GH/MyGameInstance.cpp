@@ -30,6 +30,9 @@ UMyGameInstance::UMyGameInstance()
 	ScoreSinceLastXtraLife = 0;
 
 	PlayerPB = NULL;
+
+	Handle_RestartTimer;
+	Handle_NextLevelTimer;
 }
 
 void UMyGameInstance::Init()
@@ -128,6 +131,34 @@ void UMyGameInstance::StartRestartTimer()
 		
 	}
 	//UGameplayStatics::OpenLevel(GetWorld(), FName(GetWorld()->GetCurrentLevel()->GetFullName()), true);
+}
+
+void UMyGameInstance::StartNextLevelTimer()
+{
+	if(EnemyNum <= 0)
+	{
+		if(Levels.IsValidIndex(NextLevelIndex))
+		{
+			LoadSpecifiedLevel(Levels[NextLevelIndex]);
+			NextLevelIndex++;
+			bCanLoadNextLevel = false;
+		}
+		else
+		{
+			if(bCanRestart)
+			{
+				if(Levels.IsValidIndex(0))
+				{
+					LoadSpecifiedLevel(Levels[0]);
+					NextLevelIndex = 1;
+					bCanLoadNextLevel = false;
+				}
+			}
+		}
+		EnemyNum = LevelEnemyNum;
+	}
+		
+	UE_LOG(LogTemp, Warning, TEXT("Enemy Num2: %i"), EnemyNum);
 }
 
 void UMyGameInstance::AddXtraLives()
