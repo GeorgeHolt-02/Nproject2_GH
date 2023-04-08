@@ -165,6 +165,7 @@ void APlayerChar::BeginPlay()
 		{
 			HighScore = CurrentGameInstance->TopTenScores[0].Score;
 		}
+		CurrentGameInstance->bPlayerDead = false;
 	}
 	
 	if (BlasterMesh)
@@ -607,6 +608,7 @@ void APlayerChar::PlayerDeath()
 		CurrentGameInstance->bCanLoadNextLevel = true;
 		GetWorldTimerManager().ClearTimer(CurrentGameInstance->Handle_NextLevelTimer);
 		CurrentGameInstance->Handle_NextLevelTimer.Invalidate();
+		CurrentGameInstance->bPlayerDead = true;
 		GetWorldTimerManager().SetTimer(CurrentGameInstance->Handle_RestartTimer, CurrentGameInstance, &UMyGameInstance::StartRestartTimer, 5.0f, false);
 	}
 	Blaster->Mesh->SetCollisionObjectType(ECC_PhysicsBody);

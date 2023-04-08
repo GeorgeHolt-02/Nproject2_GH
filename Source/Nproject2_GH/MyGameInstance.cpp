@@ -33,6 +33,8 @@ UMyGameInstance::UMyGameInstance()
 
 	Handle_RestartTimer;
 	Handle_NextLevelTimer;
+
+	bPlayerDead = false;
 }
 
 void UMyGameInstance::Init()
@@ -135,30 +137,33 @@ void UMyGameInstance::StartRestartTimer()
 
 void UMyGameInstance::StartNextLevelTimer()
 {
-	if(EnemyNum <= 0)
+	if(!bPlayerDead)
 	{
-		if(Levels.IsValidIndex(NextLevelIndex))
+		if(EnemyNum <= 0)
 		{
-			LoadSpecifiedLevel(Levels[NextLevelIndex]);
-			NextLevelIndex++;
-			bCanLoadNextLevel = false;
-		}
-		else
-		{
-			if(bCanRestart)
+			if(Levels.IsValidIndex(NextLevelIndex))
 			{
-				if(Levels.IsValidIndex(0))
+				LoadSpecifiedLevel(Levels[NextLevelIndex]);
+				NextLevelIndex++;
+				bCanLoadNextLevel = false;
+			}
+			else
+			{
+				if(bCanRestart)
 				{
-					LoadSpecifiedLevel(Levels[0]);
-					NextLevelIndex = 1;
-					bCanLoadNextLevel = false;
+					if(Levels.IsValidIndex(0))
+					{
+						LoadSpecifiedLevel(Levels[0]);
+						NextLevelIndex = 1;
+						bCanLoadNextLevel = false;
+					}
 				}
 			}
+			EnemyNum = LevelEnemyNum;
 		}
-		EnemyNum = LevelEnemyNum;
-	}
 		
-	UE_LOG(LogTemp, Warning, TEXT("Enemy Num2: %i"), EnemyNum);
+		UE_LOG(LogTemp, Warning, TEXT("Enemy Num2: %i"), EnemyNum);
+	}
 }
 
 void UMyGameInstance::AddXtraLives()

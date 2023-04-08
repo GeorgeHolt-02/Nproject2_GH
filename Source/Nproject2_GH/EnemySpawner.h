@@ -29,7 +29,7 @@ public:
 	TArray<UEnemyWaveSpline*> Waves;
 
 	//** Interval on which the spawn function is called (max and current, respectively) */
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	float SpawnInterval_Max;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	float SpawnInterval_Current;

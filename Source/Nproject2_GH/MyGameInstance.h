@@ -95,6 +95,10 @@ public:
 	//Next level load timer handle
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	FTimerHandle Handle_NextLevelTimer;
+
+	//Whether or not the player has died
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	bool bPlayerDead;
 	
 protected:
 
