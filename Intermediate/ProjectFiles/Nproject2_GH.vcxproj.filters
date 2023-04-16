@@ -1427,6 +1427,12 @@
     <ClInclude Include="..\..\Source\Nproject2_GH\EnemyWaveSpline.h">
       <Filter>Source\Nproject2_GH</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\Nproject2_GH\EnemyWave_Spline.cpp">
+      <Filter>Source\Nproject2_GH</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Nproject2_GH\EnemyWave_Spline.h">
+      <Filter>Source\Nproject2_GH</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\Nproject2_GH\Enemy_FlyingTurret.cpp">
       <Filter>Source\Nproject2_GH</Filter>
     </ClCompile>
@@ -1443,12 +1449,6 @@
       <Filter>Source\Nproject2_GH</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\Nproject2_GH\MovingPlatform.h">
-      <Filter>Source\Nproject2_GH</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Source\Nproject2_GH\MyCurveFloat.cpp">
-      <Filter>Source\Nproject2_GH</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\Nproject2_GH\MyCurveFloat.h">
       <Filter>Source\Nproject2_GH</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\Nproject2_GH\MyGameInstance.cpp">

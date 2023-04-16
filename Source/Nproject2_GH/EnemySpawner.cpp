@@ -3,7 +3,10 @@
 
 #include "EnemySpawner.h"
 
+#include "BaseEnemy.h"
+#include "EnemyWave_Spline.h"
 #include "MyGameInstance.h"
+#include "Components/SplineComponent.h"
 
 // Sets default values
 AEnemySpawner::AEnemySpawner()
@@ -14,15 +17,15 @@ AEnemySpawner::AEnemySpawner()
 	Origin = CreateDefaultSubobject<USceneComponent>(TEXT("Origin"));
 	SetRootComponent(Origin);
 
-	NumWaves = 3;
+	//NumWaves = 3;
 
-	//Waves.Empty();
-	for (int i = 0; i < NumWaves; i++)
-	{
-		Waves.Add(CreateDefaultSubobject<UEnemyWaveSpline>(*FString("Wave" + FString::FromInt(i+1))));
-		Waves[i]->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform,
-			*FString("EWS" + FString::FromInt(i+1)));
-	}
+	Waves.Empty();
+	// for (int i = 0; i < NumWaves; i++)
+	// {
+	// 	Waves.Add(CreateDefaultSubobject<UEnemyWaveSpline>(*FString("Wave" + FString::FromInt(i+1))));
+	// 	Waves[i]->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform,
+	// 		*FString("EWS" + FString::FromInt(i+1)));
+	// }
 
 	SpawnInterval_Max = 10.0f;
 	SpawnInterval_Current = SpawnInterval_Max;
@@ -46,7 +49,7 @@ void AEnemySpawner::BeginPlay()
 		CurrentGameInstance->EnemyNum = 0;
 		for(int i = 0; i < Waves.Num(); i++)
 		{
-			CurrentGameInstance->EnemyNum += Waves[i]->GetNumberOfSplinePoints();
+			CurrentGameInstance->EnemyNum += Waves[i]->Spline->GetNumberOfSplinePoints();
 		}
 		CurrentGameInstance->LevelEnemyNum = CurrentGameInstance->EnemyNum;
 	}
@@ -112,13 +115,13 @@ void AEnemySpawner::SpawnEnemies()
 {
 	if(WavesIndex < Waves.Num())
 	{
-		for(int i = 0; i < Waves[WavesIndex]->GetNumberOfSplinePoints(); i++)
+		for(int i = 0; i < Waves[WavesIndex]->Spline->GetNumberOfSplinePoints(); i++)
 		{
 			if(Waves[WavesIndex]->EnemyReferences[i])
 			{
 				const FActorSpawnParameters SpawnParams;
 
-				ABaseEnemy* EnemyToSpawn = (GetWorld()->SpawnActor<ABaseEnemy>(Waves[WavesIndex]->EnemyReferences[i], Waves[WavesIndex]->GetWorldLocationAtSplinePoint(i),
+				ABaseEnemy* EnemyToSpawn = (GetWorld()->SpawnActor<ABaseEnemy>(Waves[WavesIndex]->EnemyReferences[i], Waves[WavesIndex]->Spline->GetWorldLocationAtSplinePoint(i),
 					FRotator(0.0f, 0.0f, 0.0f), SpawnParams));
 			}
 		}

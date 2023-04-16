@@ -138,35 +138,44 @@ void AEnemy_MuscleGrunt::MainBehaviour(float DeltaTime)
 	FHitResult GroundCheckHit;
 
 	bool GroundCheck = GetWorld()->LineTraceSingleByChannel(GroundCheckHit, GetActorLocation(),
-		GetActorLocation() + FVector(FVector(Direction * MovementSpeed).X, FVector(Direction * MovementSpeed).Y, -(EnemyCollider->GetScaledBoxExtent().Z * 2)),
-		ECC_GameTraceChannel1, FCollisionQueryParams::DefaultQueryParam, FCollisionResponseParams::DefaultResponseParam);
+		GetActorLocation() + FVector(FVector(Direction * (EnemyCollider->GetScaledBoxExtent().X / 2)).X, FVector(Direction * (EnemyCollider->GetScaledBoxExtent().Y / 2)).Y, -(EnemyCollider->GetScaledBoxExtent().Z * 2)),
+		ECC_GameTraceChannel10, FCollisionQueryParams::DefaultQueryParam, FCollisionResponseParams::DefaultResponseParam);
 	// DrawDebugLine(GetWorld(), GetActorLocation(),GetActorLocation() + FVector(FVector(Direction * MovementSpeed).X, FVector(Direction * MovementSpeed).Y,
 	// 	-(EnemyCollider->GetScaledBoxExtent().Z * 2)), FColor::Yellow, false, -1, 0, 1.0f);
 
-	if(!GroundCheck)
-	{
-		SetActorRotation(FRotator(
-			GetActorRotation().Pitch,
-			(GetActorRotation().Yaw - 180.0f),
-			GetActorRotation().Roll
-		));
-	}
+	FHitResult* CollisionCheck = new FHitResult;
+
 	YawRotator = FRotator(0.0f, GetActorRotation().Yaw, 0.0f);
 	Direction = FRotationMatrix(YawRotator).GetUnitAxis(EAxis::X);
-
-	FHitResult* CollisionCheck = new FHitResult;
 	
-	bool Move = SetActorLocation((GetActorLocation() + (Direction * DeltaTime * MovementSpeed)), true, CollisionCheck);
-
-	if(Player)
+	if(GroundCheck)
 	{
-		SetActorRotation(FRotator(
-			GetActorRotation().Pitch,
-			UKismetMathLibrary::FindLookAtRotation(GetActorLocation(), Player->GetActorLocation()).Yaw,
-			GetActorRotation().Roll
-		));	
+		SetActorLocation((GetActorLocation() + (Direction * DeltaTime * MovementSpeed)), true, CollisionCheck);
 	}
-
+	// if(!GroundCheck)
+	// {
+	// 	SetActorRotation(FRotator(
+	// 		GetActorRotation().Pitch,
+	// 		(GetActorRotation().Yaw - 180.0f),
+	// 		GetActorRotation().Roll
+	// 	));
+	// }
+	// YawRotator = FRotator(0.0f, GetActorRotation().Yaw, 0.0f);
+	// Direction = FRotationMatrix(YawRotator).GetUnitAxis(EAxis::X);
+	//
+	// FHitResult* CollisionCheck = new FHitResult;
+	//
+	// bool Move = SetActorLocation((GetActorLocation() + (Direction * DeltaTime * MovementSpeed)), true, CollisionCheck);
+	//
+	// if(Player)
+	// {
+	// 	SetActorRotation(FRotator(
+	// 		GetActorRotation().Pitch,
+	// 		UKismetMathLibrary::FindLookAtRotation(GetActorLocation(), Player->GetActorLocation()).Yaw,
+	// 		GetActorRotation().Roll
+	// 	));	
+	// }
+	//
 	if(CollisionCheck->bStartPenetrating)
 	{
 		SetActorLocation(GetActorLocation() + CollisionCheck->ImpactNormal);
@@ -174,7 +183,7 @@ void AEnemy_MuscleGrunt::MainBehaviour(float DeltaTime)
 		SetActorLocation((GetActorLocation() + (UpVector * DeltaTime)), true);
 		//DrawDebugLine(GetWorld(), HitResult.ImpactPoint, HitResult.ImpactPoint + (HitResult.ImpactNormal * 100.0f), FColor::Green, false, 0.016667f, 0, 1);
 	}
-
+	
 	if(CollisionCheck->Component != nullptr)
 	{
 		DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);

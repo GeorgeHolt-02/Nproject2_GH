@@ -3,7 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "EnemyWaveSpline.h"
 #include "GameFramework/Actor.h"
 #include "EnemySpawner.generated.h"
 
@@ -19,14 +18,10 @@ public:
 	//** Origin */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	USceneComponent* Origin;
-
-	//** Number of splines to create */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	int NumWaves;
 	
 	//** Spline array */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Wave Splines")
-	TArray<UEnemyWaveSpline*> Waves;
+	UPROPERTY(EditInstanceOnly, BlueprintReadOnly, Category = "Wave Splines")
+	TArray<class AEnemyWave_Spline*> Waves;
 
 	//** Interval on which the spawn function is called (max and current, respectively) */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
@@ -40,7 +35,7 @@ public:
 
 	/** Game instance reference */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
-	UMyGameInstance* CurrentGameInstance;
+	class UMyGameInstance* CurrentGameInstance;
 
 protected:
 	// Called when the game starts or when spawned
