@@ -17,8 +17,15 @@ void EmptyLinkFunctionForGeneratedCodeBaseEnemyProjectile() {}
 	ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FHitResult();
 	ENGINE_API UClass* Z_Construct_UClass_UProjectileMovementComponent_NoRegister();
-	NPROJECT2_GH_API UClass* Z_Construct_UClass_UMyGameInstance_NoRegister();
+	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FTimerHandle();
 // End Cross Module References
+	DEFINE_FUNCTION(ABaseEnemyProjectile::execDestroyTimer)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->DestroyTimer();
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(ABaseEnemyProjectile::execOnOverlapStart)
 	{
 		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OverlappedComponent);
@@ -36,9 +43,34 @@ void EmptyLinkFunctionForGeneratedCodeBaseEnemyProjectile() {}
 	{
 		UClass* Class = ABaseEnemyProjectile::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
+			{ "DestroyTimer", &ABaseEnemyProjectile::execDestroyTimer },
 			{ "OnOverlapStart", &ABaseEnemyProjectile::execOnOverlapStart },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_ABaseEnemyProjectile_DestroyTimer_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_ABaseEnemyProjectile_DestroyTimer_Statics::Function_MetaDataParams[] = {
+		{ "Comment", "// Timer that destroys this shot in case instigator is not present\n" },
+		{ "ModuleRelativePath", "BaseEnemyProjectile.h" },
+		{ "ToolTip", "Timer that destroys this shot in case instigator is not present" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_ABaseEnemyProjectile_DestroyTimer_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_ABaseEnemyProjectile, nullptr, "DestroyTimer", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_ABaseEnemyProjectile_DestroyTimer_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_ABaseEnemyProjectile_DestroyTimer_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_ABaseEnemyProjectile_DestroyTimer()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_ABaseEnemyProjectile_DestroyTimer_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	struct Z_Construct_UFunction_ABaseEnemyProjectile_OnOverlapStart_Statics
 	{
@@ -140,9 +172,9 @@ void EmptyLinkFunctionForGeneratedCodeBaseEnemyProjectile() {}
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_ShotMovement;
 #if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam NewProp_CurrentGameInstance_MetaData[];
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_DestroyHandle_MetaData[];
 #endif
-		static const UECodeGen_Private::FObjectPropertyParams NewProp_CurrentGameInstance;
+		static const UECodeGen_Private::FStructPropertyParams NewProp_DestroyHandle;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -152,6 +184,7 @@ void EmptyLinkFunctionForGeneratedCodeBaseEnemyProjectile() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_Nproject2_GH,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_ABaseEnemyProjectile_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_ABaseEnemyProjectile_DestroyTimer, "DestroyTimer" }, // 2085841058
 		{ &Z_Construct_UFunction_ABaseEnemyProjectile_OnOverlapStart, "OnOverlapStart" }, // 3398904308
 	};
 #if WITH_METADATA
@@ -171,17 +204,17 @@ void EmptyLinkFunctionForGeneratedCodeBaseEnemyProjectile() {}
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_ShotMovement = { "ShotMovement", nullptr, (EPropertyFlags)0x00100000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ABaseEnemyProjectile, ShotMovement), Z_Construct_UClass_UProjectileMovementComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_ShotMovement_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_ShotMovement_MetaData)) };
 #if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_CurrentGameInstance_MetaData[] = {
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_DestroyHandle_MetaData[] = {
 		{ "Category", "BaseEnemyProjectile" },
-		{ "Comment", "/** Game instance reference */" },
+		{ "Comment", "/** Destroy timer handle */" },
 		{ "ModuleRelativePath", "BaseEnemyProjectile.h" },
-		{ "ToolTip", "Game instance reference" },
+		{ "ToolTip", "Destroy timer handle" },
 	};
 #endif
-	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_CurrentGameInstance = { "CurrentGameInstance", nullptr, (EPropertyFlags)0x0010000000020005, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ABaseEnemyProjectile, CurrentGameInstance), Z_Construct_UClass_UMyGameInstance_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_CurrentGameInstance_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_CurrentGameInstance_MetaData)) };
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_DestroyHandle = { "DestroyHandle", nullptr, (EPropertyFlags)0x0010000000020015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ABaseEnemyProjectile, DestroyHandle), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_DestroyHandle_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_DestroyHandle_MetaData)) }; // 589591453
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ABaseEnemyProjectile_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_ShotMovement,
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_CurrentGameInstance,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_DestroyHandle,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_ABaseEnemyProjectile_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<ABaseEnemyProjectile>::IsAbstract,
@@ -219,9 +252,9 @@ void EmptyLinkFunctionForGeneratedCodeBaseEnemyProjectile() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_BaseEnemyProjectile_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ABaseEnemyProjectile, ABaseEnemyProjectile::StaticClass, TEXT("ABaseEnemyProjectile"), &Z_Registration_Info_UClass_ABaseEnemyProjectile, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABaseEnemyProjectile), 1783612208U) },
+		{ Z_Construct_UClass_ABaseEnemyProjectile, ABaseEnemyProjectile::StaticClass, TEXT("ABaseEnemyProjectile"), &Z_Registration_Info_UClass_ABaseEnemyProjectile, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABaseEnemyProjectile), 2155604545U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_BaseEnemyProjectile_h_274728049(TEXT("/Script/Nproject2_GH"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_BaseEnemyProjectile_h_1328217205(TEXT("/Script/Nproject2_GH"),
 		Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_BaseEnemyProjectile_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_BaseEnemyProjectile_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

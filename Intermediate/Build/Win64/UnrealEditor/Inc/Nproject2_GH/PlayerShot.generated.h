@@ -19,6 +19,7 @@ struct FHitResult;
 #define FID_Nproject2_GH_Source_Nproject2_GH_PlayerShot_h_12_SPARSE_DATA
 #define FID_Nproject2_GH_Source_Nproject2_GH_PlayerShot_h_12_RPC_WRAPPERS \
  \
+	DECLARE_FUNCTION(execDestroyTimer); \
 	DECLARE_FUNCTION(execOnOverlapFinish); \
 	DECLARE_FUNCTION(execOnOverlapStart); \
 	DECLARE_FUNCTION(execOnHit);
@@ -26,6 +27,7 @@ struct FHitResult;
 
 #define FID_Nproject2_GH_Source_Nproject2_GH_PlayerShot_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execDestroyTimer); \
 	DECLARE_FUNCTION(execOnOverlapFinish); \
 	DECLARE_FUNCTION(execOnOverlapStart); \
 	DECLARE_FUNCTION(execOnHit);

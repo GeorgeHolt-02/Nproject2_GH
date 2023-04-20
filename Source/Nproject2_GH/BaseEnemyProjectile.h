@@ -19,9 +19,13 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement")
 	class UProjectileMovementComponent* ShotMovement;
 
-	/** Game instance reference */
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
-	class UMyGameInstance* CurrentGameInstance;
+	// /** Game instance reference */
+	// UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	// class UMyGameInstance* CurrentGameInstance;
+
+	/** Destroy timer handle */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	FTimerHandle DestroyHandle;
 	
 protected:
 	// Called when the game starts or when spawned
@@ -35,4 +39,8 @@ public:
 	UFUNCTION()
 	virtual void OnOverlapStart(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 		int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult);
+
+	// Timer that destroys this shot in case instigator is not present
+	UFUNCTION()
+	void DestroyTimer();
 };

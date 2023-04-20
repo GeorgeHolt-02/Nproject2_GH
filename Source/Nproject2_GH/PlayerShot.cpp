@@ -40,6 +40,8 @@ void APlayerShot::BeginPlay()
 	ShotMesh->OnComponentHit.AddDynamic(this, &APlayerShot::OnHit);
 	ShotMesh->OnComponentBeginOverlap.AddDynamic(this, &APlayerShot::OnOverlapStart);
 	ShotMesh->OnComponentEndOverlap.AddDynamic(this, &APlayerShot::OnOverlapFinish);
+
+	GetWorldTimerManager().SetTimer(DestroyHandle, this, &APlayerShot::DestroyTimer, 10.0f, false);
 }
 
 // Called every frame
@@ -184,4 +186,9 @@ void APlayerShot::OnOverlapFinish(UPrimitiveComponent* OverlappedComponent, AAct
 		// }
 		Destroy();
 	}
+}
+
+void APlayerShot::DestroyTimer()
+{
+	Destroy();
 }

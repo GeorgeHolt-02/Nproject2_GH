@@ -2,7 +2,7 @@
 
 
 #include "BaseEnemyProjectile.h"
-#include "MyGameInstance.h"
+//#include "MyGameInstance.h"
 #include "PlayerChar.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 
@@ -22,14 +22,17 @@ ABaseEnemyProjectile::ABaseEnemyProjectile()
 	ShotMovement->SetPlaneConstraintNormal(FVector(0.0f, 0.0f, 0.0f));
 	ShotMovement->bConstrainToPlane = false;
 
-	CurrentGameInstance = nullptr;
+	//CurrentGameInstance = nullptr;
+
+	DestroyHandle;
 }
 
 // Called when the game starts or when spawned
 void ABaseEnemyProjectile::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	GetWorldTimerManager().SetTimer(DestroyHandle, this, &ABaseEnemyProjectile::DestroyTimer, 10.0f, false);
 }
 
 // Called every frame
@@ -37,10 +40,10 @@ void ABaseEnemyProjectile::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if(GetGameInstance())
-	{
-		CurrentGameInstance = Cast<UMyGameInstance>(GetGameInstance());
-	}
+	// if(GetGameInstance())
+	// {
+	// 	CurrentGameInstance = Cast<UMyGameInstance>(GetGameInstance());
+	// }
 }
 
 void ABaseEnemyProjectile::OnOverlapStart(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
@@ -57,5 +60,10 @@ void ABaseEnemyProjectile::OnOverlapStart(UPrimitiveComponent* OverlappedCompone
 			}
 		}
 	}
+}
+
+void ABaseEnemyProjectile::DestroyTimer()
+{
+	Destroy();
 }
 

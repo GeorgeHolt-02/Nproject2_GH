@@ -20,7 +20,15 @@ void EmptyLinkFunctionForGeneratedCodePlayerShot() {}
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UProjectileMovementComponent_NoRegister();
 	NPROJECT2_GH_API UClass* Z_Construct_UClass_APlayerChar_NoRegister();
+	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FTimerHandle();
 // End Cross Module References
+	DEFINE_FUNCTION(APlayerShot::execDestroyTimer)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->DestroyTimer();
+		P_NATIVE_END;
+	}
 	DEFINE_FUNCTION(APlayerShot::execOnOverlapFinish)
 	{
 		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OverlappedComponent);
@@ -61,11 +69,36 @@ void EmptyLinkFunctionForGeneratedCodePlayerShot() {}
 	{
 		UClass* Class = APlayerShot::StaticClass();
 		static const FNameNativePtrPair Funcs[] = {
+			{ "DestroyTimer", &APlayerShot::execDestroyTimer },
 			{ "OnHit", &APlayerShot::execOnHit },
 			{ "OnOverlapFinish", &APlayerShot::execOnOverlapFinish },
 			{ "OnOverlapStart", &APlayerShot::execOnOverlapStart },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_APlayerShot_DestroyTimer_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_APlayerShot_DestroyTimer_Statics::Function_MetaDataParams[] = {
+		{ "Comment", "// Timer that destroys this shot in case instigator is not present\n" },
+		{ "ModuleRelativePath", "PlayerShot.h" },
+		{ "ToolTip", "Timer that destroys this shot in case instigator is not present" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_APlayerShot_DestroyTimer_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_APlayerShot, nullptr, "DestroyTimer", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_APlayerShot_DestroyTimer_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_APlayerShot_DestroyTimer_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_APlayerShot_DestroyTimer()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_APlayerShot_DestroyTimer_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	struct Z_Construct_UFunction_APlayerShot_OnHit_Statics
 	{
@@ -314,6 +347,10 @@ void EmptyLinkFunctionForGeneratedCodePlayerShot() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_Player_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_Player;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_DestroyHandle_MetaData[];
+#endif
+		static const UECodeGen_Private::FStructPropertyParams NewProp_DestroyHandle;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -323,6 +360,7 @@ void EmptyLinkFunctionForGeneratedCodePlayerShot() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_Nproject2_GH,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_APlayerShot_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_APlayerShot_DestroyTimer, "DestroyTimer" }, // 2475317187
 		{ &Z_Construct_UFunction_APlayerShot_OnHit, "OnHit" }, // 4177816324
 		{ &Z_Construct_UFunction_APlayerShot_OnOverlapFinish, "OnOverlapFinish" }, // 3039597207
 		{ &Z_Construct_UFunction_APlayerShot_OnOverlapStart, "OnOverlapStart" }, // 2990897959
@@ -371,11 +409,21 @@ void EmptyLinkFunctionForGeneratedCodePlayerShot() {}
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APlayerShot_Statics::NewProp_Player = { "Player", nullptr, (EPropertyFlags)0x0010000000020005, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APlayerShot, Player), Z_Construct_UClass_APlayerChar_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APlayerShot_Statics::NewProp_Player_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APlayerShot_Statics::NewProp_Player_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APlayerShot_Statics::NewProp_DestroyHandle_MetaData[] = {
+		{ "Category", "PlayerShot" },
+		{ "Comment", "/** Destroy timer handle */" },
+		{ "ModuleRelativePath", "PlayerShot.h" },
+		{ "ToolTip", "Destroy timer handle" },
+	};
+#endif
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_APlayerShot_Statics::NewProp_DestroyHandle = { "DestroyHandle", nullptr, (EPropertyFlags)0x0010000000020015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APlayerShot, DestroyHandle), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(Z_Construct_UClass_APlayerShot_Statics::NewProp_DestroyHandle_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APlayerShot_Statics::NewProp_DestroyHandle_MetaData)) }; // 589591453
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_APlayerShot_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerShot_Statics::NewProp_ShotMesh,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerShot_Statics::NewProp_ShotMovement,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerShot_Statics::NewProp_Damage,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerShot_Statics::NewProp_Player,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlayerShot_Statics::NewProp_DestroyHandle,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_APlayerShot_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<APlayerShot>::IsAbstract,
@@ -413,9 +461,9 @@ void EmptyLinkFunctionForGeneratedCodePlayerShot() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerShot_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_APlayerShot, APlayerShot::StaticClass, TEXT("APlayerShot"), &Z_Registration_Info_UClass_APlayerShot, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APlayerShot), 1033635355U) },
+		{ Z_Construct_UClass_APlayerShot, APlayerShot::StaticClass, TEXT("APlayerShot"), &Z_Registration_Info_UClass_APlayerShot, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APlayerShot), 3777637718U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerShot_h_1682572849(TEXT("/Script/Nproject2_GH"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerShot_h_33713436(TEXT("/Script/Nproject2_GH"),
 		Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerShot_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_PlayerShot_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

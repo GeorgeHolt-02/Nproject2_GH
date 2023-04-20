@@ -1409,6 +1409,12 @@
     <ClInclude Include="..\..\Source\Nproject2_GH\ButtonWidget.h">
       <Filter>Source\Nproject2_GH</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\Nproject2_GH\EnemyProjectile_BeastCore.cpp">
+      <Filter>Source\Nproject2_GH</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Nproject2_GH\EnemyProjectile_BeastCore.h">
+      <Filter>Source\Nproject2_GH</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\Nproject2_GH\EnemyProjectile_FlyingTurret.cpp">
       <Filter>Source\Nproject2_GH</Filter>
     </ClCompile>
@@ -1431,6 +1437,12 @@
       <Filter>Source\Nproject2_GH</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\Nproject2_GH\EnemyWave_Spline.h">
+      <Filter>Source\Nproject2_GH</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Nproject2_GH\Enemy_BeastCore.cpp">
+      <Filter>Source\Nproject2_GH</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Nproject2_GH\Enemy_BeastCore.h">
       <Filter>Source\Nproject2_GH</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\Nproject2_GH\Enemy_FlyingTurret.cpp">

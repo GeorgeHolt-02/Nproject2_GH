@@ -31,6 +31,10 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	class APlayerChar* Player;
 
+	/** Destroy timer handle */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	FTimerHandle DestroyHandle;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -53,4 +57,8 @@ public:
 	UFUNCTION()
 	void OnOverlapFinish(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 		int32 OtherBodyIndex);
+
+	// Timer that destroys this shot in case instigator is not present
+	UFUNCTION()
+	void DestroyTimer();
 };
