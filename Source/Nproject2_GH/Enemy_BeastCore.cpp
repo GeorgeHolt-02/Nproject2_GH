@@ -27,7 +27,7 @@ AEnemy_BeastCore::AEnemy_BeastCore()
 		}
 	}
 	//ShotTransforms_Explosion.Empty();
-	for (int i = 0; i < 26; i++)
+	for (int i = 0; i < 98; i++)
 	{
 		ShotTransforms_Explosion.Add(CreateDefaultSubobject<USceneComponent>(*FString("ExplosionShotTransform" + FString::FromInt(i+1))));
 		if(ShotTransforms_Explosion[i])
@@ -158,6 +158,8 @@ void AEnemy_BeastCore::DamageFunction(float Damage)
 	UpdateMultiplier();
 	if (Health_Current <= 0.0f)
 	{
+		GetWorldTimerManager().ClearTimer(ExplosionTimerHandle);
+    	ExplosionTimerHandle.Invalidate();
 		Death();
 	}
 	Health_Current -= Damage;
