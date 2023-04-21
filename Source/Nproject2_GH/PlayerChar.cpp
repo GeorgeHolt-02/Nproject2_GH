@@ -464,6 +464,7 @@ void APlayerChar::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, U
 		if(OtherComp)
 		{
 			AttachToComponent(OtherComp, FAttachmentTransformRules::KeepWorldTransform);
+			SetActorScale3D(FVector(1.0f, 1.0f, 1.0f));
 		}
 	}
 }

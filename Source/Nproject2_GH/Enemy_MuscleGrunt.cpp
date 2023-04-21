@@ -190,6 +190,7 @@ void AEnemy_MuscleGrunt::MainBehaviour(float DeltaTime)
 		if(CollisionCheck->Component->GetAttachmentRootActor() != Cast<ABaseEnemy>(CollisionCheck->Component->GetAttachmentRootActor()))
 		{
 			AttachToComponent(Cast<USceneComponent>(CollisionCheck->Component), FAttachmentTransformRules::KeepWorldTransform);
+			SetActorScale3D(FVector(1.0f, 1.0f, 1.0f));
 		}
 	}
 	
@@ -235,6 +236,7 @@ void AEnemy_MuscleGrunt::EnemyGravity(float DeltaTime)
 		if(CollisionCheck->Component->GetAttachmentRootActor() != Cast<ABaseEnemy>(CollisionCheck->Component->GetAttachmentRootActor()))
 		{
 			AttachToComponent(Cast<USceneComponent>(CollisionCheck->Component), FAttachmentTransformRules::KeepWorldTransform);
+			SetActorScale3D(FVector(1.0f, 1.0f, 1.0f));
 		}
 	}
 	
