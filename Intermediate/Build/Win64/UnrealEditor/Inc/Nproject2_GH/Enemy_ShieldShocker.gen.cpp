@@ -20,8 +20,119 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_ShieldShocker() {}
 	NPROJECT2_GH_API UClass* Z_Construct_UClass_AEnemyProjectile_Shockwave_NoRegister();
 	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FTimerHandle();
 // End Cross Module References
+	DEFINE_FUNCTION(AEnemy_ShieldShocker::execCloseShield)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->CloseShield();
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(AEnemy_ShieldShocker::execShieldTransition)
+	{
+		P_GET_PROPERTY(FFloatProperty,Z_Param_DeltaTime);
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->ShieldTransition(Z_Param_DeltaTime);
+		P_NATIVE_END;
+	}
+	DEFINE_FUNCTION(AEnemy_ShieldShocker::execShoot)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		P_THIS->Shoot();
+		P_NATIVE_END;
+	}
 	void AEnemy_ShieldShocker::StaticRegisterNativesAEnemy_ShieldShocker()
 	{
+		UClass* Class = AEnemy_ShieldShocker::StaticClass();
+		static const FNameNativePtrPair Funcs[] = {
+			{ "CloseShield", &AEnemy_ShieldShocker::execCloseShield },
+			{ "ShieldTransition", &AEnemy_ShieldShocker::execShieldTransition },
+			{ "Shoot", &AEnemy_ShieldShocker::execShoot },
+		};
+		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
+	}
+	struct Z_Construct_UFunction_AEnemy_ShieldShocker_CloseShield_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AEnemy_ShieldShocker_CloseShield_Statics::Function_MetaDataParams[] = {
+		{ "Comment", "//Sets the boolean that determines whether or not the shield should be open back to false\n" },
+		{ "ModuleRelativePath", "Enemy_ShieldShocker.h" },
+		{ "ToolTip", "Sets the boolean that determines whether or not the shield should be open back to false" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AEnemy_ShieldShocker_CloseShield_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AEnemy_ShieldShocker, nullptr, "CloseShield", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AEnemy_ShieldShocker_CloseShield_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AEnemy_ShieldShocker_CloseShield_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AEnemy_ShieldShocker_CloseShield()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AEnemy_ShieldShocker_CloseShield_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_AEnemy_ShieldShocker_ShieldTransition_Statics
+	{
+		struct Enemy_ShieldShocker_eventShieldTransition_Parms
+		{
+			float DeltaTime;
+		};
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_DeltaTime;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UFunction_AEnemy_ShieldShocker_ShieldTransition_Statics::NewProp_DeltaTime = { "DeltaTime", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(Enemy_ShieldShocker_eventShieldTransition_Parms, DeltaTime), METADATA_PARAMS(nullptr, 0) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_AEnemy_ShieldShocker_ShieldTransition_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_AEnemy_ShieldShocker_ShieldTransition_Statics::NewProp_DeltaTime,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AEnemy_ShieldShocker_ShieldTransition_Statics::Function_MetaDataParams[] = {
+		{ "Comment", "//Moves the shield between the positions\n" },
+		{ "ModuleRelativePath", "Enemy_ShieldShocker.h" },
+		{ "ToolTip", "Moves the shield between the positions" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AEnemy_ShieldShocker_ShieldTransition_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AEnemy_ShieldShocker, nullptr, "ShieldTransition", nullptr, nullptr, sizeof(Z_Construct_UFunction_AEnemy_ShieldShocker_ShieldTransition_Statics::Enemy_ShieldShocker_eventShieldTransition_Parms), Z_Construct_UFunction_AEnemy_ShieldShocker_ShieldTransition_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_AEnemy_ShieldShocker_ShieldTransition_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AEnemy_ShieldShocker_ShieldTransition_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AEnemy_ShieldShocker_ShieldTransition_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AEnemy_ShieldShocker_ShieldTransition()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AEnemy_ShieldShocker_ShieldTransition_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+	struct Z_Construct_UFunction_AEnemy_ShieldShocker_Shoot_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_AEnemy_ShieldShocker_Shoot_Statics::Function_MetaDataParams[] = {
+		{ "Comment", "//Shooting function\n" },
+		{ "ModuleRelativePath", "Enemy_ShieldShocker.h" },
+		{ "ToolTip", "Shooting function" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AEnemy_ShieldShocker_Shoot_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AEnemy_ShieldShocker, nullptr, "Shoot", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_AEnemy_ShieldShocker_Shoot_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_AEnemy_ShieldShocker_Shoot_Statics::Function_MetaDataParams)) };
+	UFunction* Z_Construct_UFunction_AEnemy_ShieldShocker_Shoot()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AEnemy_ShieldShocker_Shoot_Statics::FuncParams);
+		}
+		return ReturnFunction;
 	}
 	IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(AEnemy_ShieldShocker);
 	UClass* Z_Construct_UClass_AEnemy_ShieldShocker_NoRegister()
@@ -31,6 +142,7 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_ShieldShocker() {}
 	struct Z_Construct_UClass_AEnemy_ShieldShocker_Statics
 	{
 		static UObject* (*const DependentSingletons[])();
+		static const FClassFunctionLinkInfo FuncInfo[];
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[];
 #endif
@@ -89,14 +201,6 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_ShieldShocker() {}
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_ShieldTransitionAlpha;
 #if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam NewProp_TimerHandle_Shoot_MetaData[];
-#endif
-		static const UECodeGen_Private::FStructPropertyParams NewProp_TimerHandle_Shoot;
-#if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam NewProp_ShootDelay_MetaData[];
-#endif
-		static const UECodeGen_Private::FFloatPropertyParams NewProp_ShootDelay;
-#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_TimerHandle_Close_MetaData[];
 #endif
 		static const UECodeGen_Private::FStructPropertyParams NewProp_TimerHandle_Close;
@@ -116,6 +220,11 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_ShieldShocker() {}
 	UObject* (*const Z_Construct_UClass_AEnemy_ShieldShocker_Statics::DependentSingletons[])() = {
 		(UObject* (*)())Z_Construct_UClass_ABaseEnemy,
 		(UObject* (*)())Z_Construct_UPackage__Script_Nproject2_GH,
+	};
+	const FClassFunctionLinkInfo Z_Construct_UClass_AEnemy_ShieldShocker_Statics::FuncInfo[] = {
+		{ &Z_Construct_UFunction_AEnemy_ShieldShocker_CloseShield, "CloseShield" }, // 1862703253
+		{ &Z_Construct_UFunction_AEnemy_ShieldShocker_ShieldTransition, "ShieldTransition" }, // 2772654684
+		{ &Z_Construct_UFunction_AEnemy_ShieldShocker_Shoot, "Shoot" }, // 3820005056
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_ShieldShocker_Statics::Class_MetaDataParams[] = {
@@ -252,22 +361,6 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_ShieldShocker() {}
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_ShieldShocker_Statics::NewProp_ShieldTransitionAlpha = { "ShieldTransitionAlpha", nullptr, (EPropertyFlags)0x0010000000020005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_ShieldShocker, ShieldTransitionAlpha), METADATA_PARAMS(Z_Construct_UClass_AEnemy_ShieldShocker_Statics::NewProp_ShieldTransitionAlpha_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_ShieldShocker_Statics::NewProp_ShieldTransitionAlpha_MetaData)) };
 #if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_ShieldShocker_Statics::NewProp_TimerHandle_Shoot_MetaData[] = {
-		{ "Category", "Enemy_ShieldShocker" },
-		{ "Comment", "//** Shoot timer */\n" },
-		{ "ModuleRelativePath", "Enemy_ShieldShocker.h" },
-		{ "ToolTip", "/ Shoot timer" },
-	};
-#endif
-	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AEnemy_ShieldShocker_Statics::NewProp_TimerHandle_Shoot = { "TimerHandle_Shoot", nullptr, (EPropertyFlags)0x0010000000020015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_ShieldShocker, TimerHandle_Shoot), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(Z_Construct_UClass_AEnemy_ShieldShocker_Statics::NewProp_TimerHandle_Shoot_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_ShieldShocker_Statics::NewProp_TimerHandle_Shoot_MetaData)) }; // 589591453
-#if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_ShieldShocker_Statics::NewProp_ShootDelay_MetaData[] = {
-		{ "Category", "Enemy_ShieldShocker" },
-		{ "ModuleRelativePath", "Enemy_ShieldShocker.h" },
-	};
-#endif
-	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_ShieldShocker_Statics::NewProp_ShootDelay = { "ShootDelay", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_ShieldShocker, ShootDelay), METADATA_PARAMS(Z_Construct_UClass_AEnemy_ShieldShocker_Statics::NewProp_ShootDelay_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_ShieldShocker_Statics::NewProp_ShootDelay_MetaData)) };
-#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_ShieldShocker_Statics::NewProp_TimerHandle_Close_MetaData[] = {
 		{ "Category", "Enemy_ShieldShocker" },
 		{ "Comment", "//** Close shield timer */\n" },
@@ -311,8 +404,6 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_ShieldShocker() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_ShieldShocker_Statics::NewProp_AggroRadius,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_ShieldShocker_Statics::NewProp_ShieldTransitionDuration,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_ShieldShocker_Statics::NewProp_ShieldTransitionAlpha,
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_ShieldShocker_Statics::NewProp_TimerHandle_Shoot,
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_ShieldShocker_Statics::NewProp_ShootDelay,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_ShieldShocker_Statics::NewProp_TimerHandle_Close,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_ShieldShocker_Statics::NewProp_CloseDelay,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_ShieldShocker_Statics::NewProp_bOpen,
@@ -325,11 +416,11 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_ShieldShocker() {}
 		"Engine",
 		&StaticCppClassTypeInfo,
 		DependentSingletons,
-		nullptr,
+		FuncInfo,
 		Z_Construct_UClass_AEnemy_ShieldShocker_Statics::PropPointers,
 		nullptr,
 		UE_ARRAY_COUNT(DependentSingletons),
-		0,
+		UE_ARRAY_COUNT(FuncInfo),
 		UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_ShieldShocker_Statics::PropPointers),
 		0,
 		0x009000A4u,
@@ -353,9 +444,9 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_ShieldShocker() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_ShieldShocker_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AEnemy_ShieldShocker, AEnemy_ShieldShocker::StaticClass, TEXT("AEnemy_ShieldShocker"), &Z_Registration_Info_UClass_AEnemy_ShieldShocker, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemy_ShieldShocker), 1283238076U) },
+		{ Z_Construct_UClass_AEnemy_ShieldShocker, AEnemy_ShieldShocker::StaticClass, TEXT("AEnemy_ShieldShocker"), &Z_Registration_Info_UClass_AEnemy_ShieldShocker, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemy_ShieldShocker), 2324993685U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_ShieldShocker_h_2082376337(TEXT("/Script/Nproject2_GH"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_ShieldShocker_h_2378990574(TEXT("/Script/Nproject2_GH"),
 		Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_ShieldShocker_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_ShieldShocker_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

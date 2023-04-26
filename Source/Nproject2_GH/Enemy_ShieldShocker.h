@@ -35,7 +35,6 @@ public:
 	//** Shockwave origin transform */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	USceneComponent* ShockwaveTransform;
-
 	//** The radius a shockwave can grow to before it despawns */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Shooting")
 	float MaxShockRadius;
@@ -63,12 +62,7 @@ public:
 	//** Current shield transition alpha */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	float ShieldTransitionAlpha;
-
-	//** Shoot timer */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	FTimerHandle TimerHandle_Shoot;
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	float ShootDelay;
+	
 	//** Close shield timer */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	FTimerHandle TimerHandle_Close;
@@ -95,12 +89,15 @@ public:
 	virtual void DamageFunction(float Damage) override;
 
 	//Shooting function
+	UFUNCTION()
 	void Shoot();
 	//Destroys projectiles that are far-away enough from the player
 	void ShotCleanup();
 
-	//Opens the shield
-	void OpenShield(float DeltaTime);
-	//Closes the shield
-	void CloseShield(float DeltaTime);
+	//Moves the shield between the positions
+	UFUNCTION()
+	void ShieldTransition(float DeltaTime);
+	//Sets the boolean that determines whether or not the shield should be open back to false
+	UFUNCTION()
+	void CloseShield();
 };

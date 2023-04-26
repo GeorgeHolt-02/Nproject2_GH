@@ -34,8 +34,6 @@ AEnemy_ShieldShocker::AEnemy_ShieldShocker()
 	ShieldTransitionDuration = 0.25f;
 	ShieldTransitionAlpha = 0.0f;
 
-	TimerHandle_Shoot;
-	ShootDelay = 0.5f;
 	TimerHandle_Close;
 	CloseDelay = 0.75f;
 
@@ -66,7 +64,7 @@ void AEnemy_ShieldShocker::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	
+	ShotCleanup();
 }
 
 void AEnemy_ShieldShocker::InvulnPeriod(float DeltaTime)
@@ -103,6 +101,7 @@ void AEnemy_ShieldShocker::InvulnPeriod(float DeltaTime)
 			}
 			bShouldFlash = false;
 			bStopFlashing = false;
+			bCanShoot = true;
 		}
 	}
 }
@@ -127,10 +126,15 @@ void AEnemy_ShieldShocker::VisibilityFlashing(float DeltaTime)
 
 void AEnemy_ShieldShocker::MainBehaviour(float DeltaTime)
 {
-	// if((InvulnTime_Current <= 0.0f) && (bCanShoot) && (FVector::Dist(GetActorLocation(), Player->GetActorLocation()) <= AggroRadius))
-	// {
-	// 	
-	// }
+	if((InvulnTime_Current <= 0.0f) &&
+		(ShieldTransitionAlpha <= 0.0f) &&
+		(FVector::Dist(GetActorLocation(), Player->GetActorLocation()) <= AggroRadius)
+		)
+	{
+		bOpen = true;
+	}
+
+	ShieldTransition(DeltaTime);
 }
 
 void AEnemy_ShieldShocker::DamageFunction(float Damage)
@@ -176,10 +180,53 @@ void AEnemy_ShieldShocker::ShotCleanup()
 	{
 		if(Shock->ActorHasTag(ShockTag))
 		{
-			if(Shock->GetActorScale3D().X > MaxShockRadius)
+			if((Shock->GetActorScale().X > MaxShockRadius) || (Shock->GetActorScale().Y > MaxShockRadius))
 			{
 				Shock->Destroy();
 			}
 		}
 	}
+}
+
+void AEnemy_ShieldShocker::ShieldTransition(float DeltaTime)
+{
+	if(bOpen)
+	{
+		ShieldTransitionAlpha = FMath::Clamp((ShieldTransitionAlpha + (DeltaTime / ShieldTransitionDuration)), 0.0f, 1.0f);
+	
+		if(ShieldMesh->GetComponentLocation() != OpenTransform->GetComponentLocation())
+		{
+			if (ShieldTransitionAlpha >= 1.0f)
+			{
+				ShieldMesh->SetWorldLocation(OpenTransform->GetComponentLocation());
+				Shoot();
+				GetWorldTimerManager().SetTimer(TimerHandle_Close, this, &AEnemy_ShieldShocker::CloseShield, CloseDelay, false);
+			}
+			else
+			{
+				ShieldMesh->SetWorldLocation(FMath::Lerp(ClosedTransform->GetComponentLocation(), OpenTransform->GetComponentLocation(), ShieldTransitionAlpha));
+			}
+		}
+	}
+	else
+	{
+		ShieldTransitionAlpha = FMath::Clamp((ShieldTransitionAlpha - (DeltaTime / ShieldTransitionDuration)), 0.0f, 1.0f);
+	
+		if(ShieldMesh->GetComponentLocation() != ClosedTransform->GetComponentLocation())
+		{
+			if (ShieldTransitionAlpha <= 0.0f)
+			{
+				ShieldMesh->SetWorldLocation(ClosedTransform->GetComponentLocation());
+			}
+			else
+			{
+				ShieldMesh->SetWorldLocation(FMath::Lerp(ClosedTransform->GetComponentLocation(), OpenTransform->GetComponentLocation(), ShieldTransitionAlpha));
+			}
+		}
+	}
+}
+
+void AEnemy_ShieldShocker::CloseShield()
+{
+	bOpen = false;
 }

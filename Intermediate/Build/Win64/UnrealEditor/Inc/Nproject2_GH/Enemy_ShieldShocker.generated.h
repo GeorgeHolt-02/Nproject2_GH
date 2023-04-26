@@ -14,8 +14,20 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define NPROJECT2_GH_Enemy_ShieldShocker_generated_h
 
 #define FID_Nproject2_GH_Source_Nproject2_GH_Enemy_ShieldShocker_h_15_SPARSE_DATA
-#define FID_Nproject2_GH_Source_Nproject2_GH_Enemy_ShieldShocker_h_15_RPC_WRAPPERS
-#define FID_Nproject2_GH_Source_Nproject2_GH_Enemy_ShieldShocker_h_15_RPC_WRAPPERS_NO_PURE_DECLS
+#define FID_Nproject2_GH_Source_Nproject2_GH_Enemy_ShieldShocker_h_15_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execCloseShield); \
+	DECLARE_FUNCTION(execShieldTransition); \
+	DECLARE_FUNCTION(execShoot);
+
+
+#define FID_Nproject2_GH_Source_Nproject2_GH_Enemy_ShieldShocker_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execCloseShield); \
+	DECLARE_FUNCTION(execShieldTransition); \
+	DECLARE_FUNCTION(execShoot);
+
+
 #define FID_Nproject2_GH_Source_Nproject2_GH_Enemy_ShieldShocker_h_15_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAEnemy_ShieldShocker(); \
