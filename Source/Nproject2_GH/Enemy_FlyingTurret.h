@@ -40,7 +40,7 @@ public:
 	float MaxProjTravelDistance;
 
 	/** The name of the projectile currently being checked when determining
-	whether or not the player can fire again */
+	whether or not the enemy can fire again */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Shooting")
 	FName ShotTag;
 

@@ -164,9 +164,9 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_FlyingTurret() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_FlyingTurret_Statics::NewProp_ShotTag_MetaData[] = {
 		{ "Category", "Shooting" },
-		{ "Comment", "/** The name of the projectile currently being checked when determining\n\x09whether or not the player can fire again */" },
+		{ "Comment", "/** The name of the projectile currently being checked when determining\n\x09whether or not the enemy can fire again */" },
 		{ "ModuleRelativePath", "Enemy_FlyingTurret.h" },
-		{ "ToolTip", "The name of the projectile currently being checked when determining\n      whether or not the player can fire again" },
+		{ "ToolTip", "The name of the projectile currently being checked when determining\n      whether or not the enemy can fire again" },
 	};
 #endif
 	const UECodeGen_Private::FNamePropertyParams Z_Construct_UClass_AEnemy_FlyingTurret_Statics::NewProp_ShotTag = { "ShotTag", nullptr, (EPropertyFlags)0x0010000000020015, UECodeGen_Private::EPropertyGenFlags::Name, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_FlyingTurret, ShotTag), METADATA_PARAMS(Z_Construct_UClass_AEnemy_FlyingTurret_Statics::NewProp_ShotTag_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_FlyingTurret_Statics::NewProp_ShotTag_MetaData)) };
@@ -291,9 +291,9 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_FlyingTurret() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_FlyingTurret_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AEnemy_FlyingTurret, AEnemy_FlyingTurret::StaticClass, TEXT("AEnemy_FlyingTurret"), &Z_Registration_Info_UClass_AEnemy_FlyingTurret, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemy_FlyingTurret), 1201846747U) },
+		{ Z_Construct_UClass_AEnemy_FlyingTurret, AEnemy_FlyingTurret::StaticClass, TEXT("AEnemy_FlyingTurret"), &Z_Registration_Info_UClass_AEnemy_FlyingTurret, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemy_FlyingTurret), 1210275215U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_FlyingTurret_h_391764495(TEXT("/Script/Nproject2_GH"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_FlyingTurret_h_4237736366(TEXT("/Script/Nproject2_GH"),
 		Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_FlyingTurret_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_FlyingTurret_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

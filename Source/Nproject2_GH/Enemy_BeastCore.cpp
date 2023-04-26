@@ -6,6 +6,7 @@
 #include "EnemyProjectile_BeastCore.h"
 #include "PlayerChar.h"
 #include "Components/BoxComponent.h"
+#include "Components/StaticMeshComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetMathLibrary.h"
 

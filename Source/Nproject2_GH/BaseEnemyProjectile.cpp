@@ -32,7 +32,7 @@ void ABaseEnemyProjectile::BeginPlay()
 {
 	Super::BeginPlay();
 
-	GetWorldTimerManager().SetTimer(DestroyHandle, this, &ABaseEnemyProjectile::DestroyTimer, 10.0f, false);
+	GetWorldTimerManager().SetTimer(DestroyHandle, this, &ABaseEnemyProjectile::DestroyTimer, 5.0f, false);
 }
 
 // Called every frame
