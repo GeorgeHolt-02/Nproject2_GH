@@ -126,12 +126,15 @@ void AEnemy_ShieldShocker::VisibilityFlashing(float DeltaTime)
 
 void AEnemy_ShieldShocker::MainBehaviour(float DeltaTime)
 {
-	if((InvulnTime_Current <= 0.0f) &&
+	if(Player)
+	{
+		if((InvulnTime_Current <= 0.0f) &&
 		(ShieldTransitionAlpha <= 0.0f) &&
 		(FVector::Dist(GetActorLocation(), Player->GetActorLocation()) <= AggroRadius)
 		)
-	{
-		bOpen = true;
+		{
+			bOpen = true;
+		}
 	}
 
 	ShieldTransition(DeltaTime);

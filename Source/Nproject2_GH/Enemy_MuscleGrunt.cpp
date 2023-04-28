@@ -2,7 +2,6 @@
 
 
 #include "Enemy_MuscleGrunt.h"
-#include "ComponentUtils.h"
 #include "MyGameInstance.h"
 #include "Components/BoxComponent.h"
 #include "Kismet/KismetMathLibrary.h"
@@ -39,10 +38,10 @@ void AEnemy_MuscleGrunt::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if(GetGameInstance())
-	{
-		CurrentGameInstance = Cast<UMyGameInstance>(GetGameInstance());
-	}
+	// if(GetGameInstance())
+	// {
+	// 	CurrentGameInstance = Cast<UMyGameInstance>(GetGameInstance());
+	// }
 	
 	EnemyCollider->OnComponentHit.AddDynamic(this, &AEnemy_MuscleGrunt::OnHit);
 }
@@ -312,28 +311,7 @@ void AEnemy_MuscleGrunt::FallDeath()
 		if(CurrentGameInstance)
 		{
 			CurrentGameInstance->EnemyNum = FMath::Clamp(CurrentGameInstance->EnemyNum - 1, 0, INFINITY);
-			if(CurrentGameInstance->EnemyNum <= 0)
-			{
-				if(CurrentGameInstance->Levels.IsValidIndex(CurrentGameInstance->NextLevelIndex))
-				{
-					CurrentGameInstance->LoadSpecifiedLevel(CurrentGameInstance->Levels[CurrentGameInstance->NextLevelIndex]);
-					CurrentGameInstance->NextLevelIndex++;
-					CurrentGameInstance->bCanLoadNextLevel = false;
-				}
-				else
-				{
-					if(CurrentGameInstance->bCanRestart)
-					{
-						if(CurrentGameInstance->Levels.IsValidIndex(0))
-						{
-							CurrentGameInstance->LoadSpecifiedLevel(CurrentGameInstance->Levels[0]);
-							CurrentGameInstance->NextLevelIndex = 1;
-							CurrentGameInstance->bCanLoadNextLevel = false;
-						}
-					}
-				}
-				CurrentGameInstance->EnemyNum = CurrentGameInstance->LevelEnemyNum;
-			}
+			GetWorldTimerManager().SetTimer(CurrentGameInstance->Handle_NextLevelTimer, CurrentGameInstance, &UMyGameInstance::StartNextLevelTimer, 5.0f, false);
 		}
 		Destroy();
 	}
