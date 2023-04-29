@@ -76,7 +76,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	// Enables collision on the first frame
-	void EnableCollision();
+	virtual void EnableCollision();
 
 	// The loop for the starting invulnerability period
 	virtual void InvulnPeriod(float DeltaTime);

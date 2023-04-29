@@ -12,9 +12,6 @@
 
 AEnemy_Ballfrog::AEnemy_Ballfrog()
 {
-	EnemyCollider->OnComponentBeginOverlap.RemoveDynamic(this, &ABaseEnemy::OnOverlapStart);
-	EnemyCollider->DestroyComponent();
-
 	EnemySphereCollider = CreateDefaultSubobject<USphereComponent>(TEXT("EnemySphereCollider"));
 	SetRootComponent(EnemySphereCollider);
 	
@@ -43,6 +40,9 @@ void AEnemy_Ballfrog::BeginPlay()
 {
 	Super::BeginPlay();
 
+	EnemyCollider->OnComponentBeginOverlap.RemoveDynamic(this, &ABaseEnemy::OnOverlapStart);
+	EnemyCollider->DestroyComponent();
+	
 	// if(GetGameInstance())
 	// {
 	// 	CurrentGameInstance = Cast<UMyGameInstance>(GetGameInstance());
@@ -68,6 +68,14 @@ void AEnemy_Ballfrog::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	FallDeath();
+}
+
+void AEnemy_Ballfrog::EnableCollision()
+{
+	if (EnemySphereCollider->GetCollisionEnabled() != ECollisionEnabled::QueryAndPhysics)
+	{
+		EnemySphereCollider->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	}
 }
 
 void AEnemy_Ballfrog::InvulnPeriod(float DeltaTime)
@@ -124,20 +132,27 @@ void AEnemy_Ballfrog::VisibilityFlashing(float DeltaTime)
 void AEnemy_Ballfrog::MainBehaviour(float DeltaTime)
 {
 	FHitResult GroundCheckHit;
+	
+	const FVector OriginalPos = GetActorLocation();
 
+	SetActorLocation(GetActorLocation() + (EnemySphereCollider->GetScaledSphereRadius() * Direction));
+	
 	bool GroundCheck = GetWorld()->LineTraceSingleByChannel(GroundCheckHit, GetActorLocation(),
-		GetActorLocation() + FVector(FVector(Direction * (EnemySphereCollider->GetScaledSphereRadius() / 2)).X, FVector(Direction * (EnemySphereCollider->GetScaledSphereRadius() / 2)).Y, -(EnemySphereCollider->GetScaledSphereRadius() * (BounceVelocity / CurrentGravity))),
+	GetActorLocation() + FVector(0.0f, 0.0f, -((EnemySphereCollider->GetScaledSphereRadius() / 2) * (BounceVelocity / CurrentGravity))),
 		ECC_GameTraceChannel10, FCollisionQueryParams::DefaultQueryParam, FCollisionResponseParams::DefaultResponseParam);
-	// DrawDebugLine(GetWorld(), GetActorLocation(),GetActorLocation() + FVector(FVector(Direction * MovementSpeed).X, FVector(Direction * MovementSpeed).Y,
-	// 	-(EnemyCollider->GetScaledBoxExtent().Z * 2)), FColor::Yellow, false, -1, 0, 1.0f);
-
+	// DrawDebugLine(GetWorld(), GetActorLocation(),
+	// 	GetActorLocation() + FVector(0.0f, 0.0f, -((EnemySphereCollider->GetScaledSphereRadius() / 2) * (BounceVelocity / CurrentGravity))),
+	// 			FColor::Yellow, false, 1.0f, 0, 5.0f);
+	
 	if(!GroundCheck)
 	{
 		Movement->Velocity = FVector(
-		FVector(CurrentGravity * Movement->InitialSpeed * -(Direction)).X,
-		FVector(CurrentGravity * Movement->InitialSpeed * -(Direction)).Y,
+		-(Movement->Velocity.X),
+		-(Movement->Velocity.X),
 		Movement->Velocity.Z);
 	}
+		
+	SetActorLocation(OriginalPos);
 }
 
 void AEnemy_Ballfrog::DamageFunction(float Damage)

@@ -90,9 +90,12 @@ void ABaseEnemy::Tick(float DeltaTime)
 
 void ABaseEnemy::EnableCollision()
 {
-	if (EnemyCollider->GetCollisionEnabled() != ECollisionEnabled::QueryAndPhysics)
+	if(EnemyCollider)
 	{
-		EnemyCollider->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+		if (EnemyCollider->GetCollisionEnabled() != ECollisionEnabled::QueryAndPhysics)
+		{
+			EnemyCollider->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+		}
 	}
 }
 

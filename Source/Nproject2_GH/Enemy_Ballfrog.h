@@ -58,6 +58,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	virtual void EnableCollision() override;
 	virtual void InvulnPeriod(float DeltaTime) override;
 	virtual void VisibilityFlashing(float DeltaTime) override;
 	virtual void MainBehaviour(float DeltaTime) override;

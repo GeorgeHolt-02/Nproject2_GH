@@ -139,8 +139,7 @@ void AEnemy_MuscleGrunt::MainBehaviour(float DeltaTime)
 	bool GroundCheck = GetWorld()->LineTraceSingleByChannel(GroundCheckHit, GetActorLocation(),
 		GetActorLocation() + FVector(FVector(Direction * (EnemyCollider->GetScaledBoxExtent().X / 2)).X, FVector(Direction * (EnemyCollider->GetScaledBoxExtent().Y / 2)).Y, -(EnemyCollider->GetScaledBoxExtent().Z * 2)),
 		ECC_GameTraceChannel10, FCollisionQueryParams::DefaultQueryParam, FCollisionResponseParams::DefaultResponseParam);
-	// DrawDebugLine(GetWorld(), GetActorLocation(),GetActorLocation() + FVector(FVector(Direction * MovementSpeed).X, FVector(Direction * MovementSpeed).Y,
-	// 	-(EnemyCollider->GetScaledBoxExtent().Z * 2)), FColor::Yellow, false, -1, 0, 1.0f);
+	//DrawDebugLine(GetWorld(), GetActorLocation(),GetActorLocation() + FVector(FVector(Direction * (EnemyCollider->GetScaledBoxExtent().X / 2)).X, FVector(Direction * (EnemyCollider->GetScaledBoxExtent().Y / 2)).Y, -(EnemyCollider->GetScaledBoxExtent().Z * 2)), FColor::Yellow, false, -1, 0, 5.0f);
 
 	FHitResult* CollisionCheck = new FHitResult;
 
