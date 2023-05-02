@@ -2,14 +2,12 @@
 
 
 #include "EnemyProjectile_FlyingTurret.h"
-//#include "MyGameInstance.h"
 
 AEnemyProjectile_FlyingTurret::AEnemyProjectile_FlyingTurret()
 {
 	ShotMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShotMesh"));
 	SetRootComponent(ShotMesh);
 	ShotMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-	
 }
 
 void AEnemyProjectile_FlyingTurret::BeginPlay()

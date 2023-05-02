@@ -25,6 +25,7 @@ ABaseEnemyProjectile::ABaseEnemyProjectile()
 	//CurrentGameInstance = nullptr;
 
 	DestroyHandle;
+	DestroyDelay = 5.0f;
 }
 
 // Called when the game starts or when spawned
@@ -32,7 +33,7 @@ void ABaseEnemyProjectile::BeginPlay()
 {
 	Super::BeginPlay();
 
-	GetWorldTimerManager().SetTimer(DestroyHandle, this, &ABaseEnemyProjectile::DestroyTimer, 5.0f, false);
+	GetWorldTimerManager().SetTimer(DestroyHandle, this, &ABaseEnemyProjectile::DestroyTimer, DestroyDelay, false);
 }
 
 // Called every frame

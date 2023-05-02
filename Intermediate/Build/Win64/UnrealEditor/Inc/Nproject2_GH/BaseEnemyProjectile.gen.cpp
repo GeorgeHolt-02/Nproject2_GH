@@ -175,6 +175,10 @@ void EmptyLinkFunctionForGeneratedCodeBaseEnemyProjectile() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_DestroyHandle_MetaData[];
 #endif
 		static const UECodeGen_Private::FStructPropertyParams NewProp_DestroyHandle;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_DestroyDelay_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_DestroyDelay;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -212,9 +216,19 @@ void EmptyLinkFunctionForGeneratedCodeBaseEnemyProjectile() {}
 	};
 #endif
 	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_DestroyHandle = { "DestroyHandle", nullptr, (EPropertyFlags)0x0010000000020015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ABaseEnemyProjectile, DestroyHandle), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_DestroyHandle_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_DestroyHandle_MetaData)) }; // 589591453
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_DestroyDelay_MetaData[] = {
+		{ "Category", "BaseEnemyProjectile" },
+		{ "Comment", "/** Delay time before shot is destroyed */" },
+		{ "ModuleRelativePath", "BaseEnemyProjectile.h" },
+		{ "ToolTip", "Delay time before shot is destroyed" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_DestroyDelay = { "DestroyDelay", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ABaseEnemyProjectile, DestroyDelay), METADATA_PARAMS(Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_DestroyDelay_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_DestroyDelay_MetaData)) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ABaseEnemyProjectile_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_ShotMovement,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_DestroyHandle,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABaseEnemyProjectile_Statics::NewProp_DestroyDelay,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_ABaseEnemyProjectile_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<ABaseEnemyProjectile>::IsAbstract,
@@ -252,9 +266,9 @@ void EmptyLinkFunctionForGeneratedCodeBaseEnemyProjectile() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_BaseEnemyProjectile_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ABaseEnemyProjectile, ABaseEnemyProjectile::StaticClass, TEXT("ABaseEnemyProjectile"), &Z_Registration_Info_UClass_ABaseEnemyProjectile, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABaseEnemyProjectile), 2155604545U) },
+		{ Z_Construct_UClass_ABaseEnemyProjectile, ABaseEnemyProjectile::StaticClass, TEXT("ABaseEnemyProjectile"), &Z_Registration_Info_UClass_ABaseEnemyProjectile, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABaseEnemyProjectile), 766541134U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_BaseEnemyProjectile_h_1328217205(TEXT("/Script/Nproject2_GH"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_BaseEnemyProjectile_h_2043303576(TEXT("/Script/Nproject2_GH"),
 		Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_BaseEnemyProjectile_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_BaseEnemyProjectile_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

@@ -26,6 +26,10 @@ public:
 	/** Destroy timer handle */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	FTimerHandle DestroyHandle;
+
+	/** Delay time before shot is destroyed */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	float DestroyDelay;
 	
 protected:
 	// Called when the game starts or when spawned

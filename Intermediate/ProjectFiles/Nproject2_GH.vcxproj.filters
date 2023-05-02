@@ -1415,6 +1415,12 @@
     <ClInclude Include="..\..\Source\Nproject2_GH\EnemyProjectile_BeastCore.h">
       <Filter>Source\Nproject2_GH</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\Nproject2_GH\EnemyProjectile_Fireball.cpp">
+      <Filter>Source\Nproject2_GH</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Nproject2_GH\EnemyProjectile_Fireball.h">
+      <Filter>Source\Nproject2_GH</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\Nproject2_GH\EnemyProjectile_FlyingTurret.cpp">
       <Filter>Source\Nproject2_GH</Filter>
     </ClCompile>
@@ -1467,6 +1473,12 @@
       <Filter>Source\Nproject2_GH</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\Nproject2_GH\Enemy_ShieldShocker.h">
+      <Filter>Source\Nproject2_GH</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Nproject2_GH\FireGeyser.cpp">
+      <Filter>Source\Nproject2_GH</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Nproject2_GH\FireGeyser.h">
       <Filter>Source\Nproject2_GH</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\Nproject2_GH\MovingPlatform.cpp">
