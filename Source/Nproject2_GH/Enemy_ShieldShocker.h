@@ -87,6 +87,7 @@ public:
 	virtual void VisibilityFlashing(float DeltaTime) override;
 	virtual void MainBehaviour(float DeltaTime) override;
 	virtual void DamageFunction(float Damage) override;
+	virtual void EnableCollision() override;
 
 	//Shooting function
 	UFUNCTION()

@@ -14,6 +14,7 @@ AEnemy_ShieldShocker::AEnemy_ShieldShocker()
 
 	ShieldMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ShieldMesh"));
 	ShieldMesh->SetupAttachment(RootComponent);
+	ShieldMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	CoreMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("CoreMesh"));
 	CoreMesh->SetupAttachment(RootComponent);
 
@@ -44,7 +45,7 @@ void AEnemy_ShieldShocker::BeginPlay()
 {
 	Super::BeginPlay();
 
-	
+	ShieldMesh->OnComponentBeginOverlap.AddDynamic(this, &AEnemy_ShieldShocker::OnOverlapStart);
 }
 
 void AEnemy_ShieldShocker::StartInvulnPeriod()
@@ -52,6 +53,7 @@ void AEnemy_ShieldShocker::StartInvulnPeriod()
 	Super::StartInvulnPeriod();
 
 	EnemyCollider->SetCollisionObjectType(ECC_GameTraceChannel9);
+	ShieldMesh->SetCollisionObjectType(ECC_GameTraceChannel9);
 	bCanShoot = false;
 	ShieldMesh->SetVisibility(false);
 	CoreMesh->SetVisibility(false);
@@ -88,6 +90,10 @@ void AEnemy_ShieldShocker::InvulnPeriod(float DeltaTime)
 		if(EnemyCollider->GetCollisionObjectType() != ECC_GameTraceChannel7)
 		{
 			EnemyCollider->SetCollisionObjectType(ECC_GameTraceChannel7);
+		}
+		if(ShieldMesh->GetCollisionObjectType() != ECC_GameTraceChannel11)
+		{
+			ShieldMesh->SetCollisionObjectType(ECC_GameTraceChannel11);
 		}
 		if(bStopFlashing)
 		{
@@ -156,6 +162,16 @@ void AEnemy_ShieldShocker::DamageFunction(float Damage)
 	CoreMesh->SetVisibility(false);
 	FlashTime_Current = FlashTime_Max;
 	bShouldFlash = true;
+}
+
+void AEnemy_ShieldShocker::EnableCollision()
+{
+	Super::EnableCollision();
+
+	if (ShieldMesh->GetCollisionEnabled() != ECollisionEnabled::QueryAndPhysics)
+	{
+		ShieldMesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	}
 }
 
 void AEnemy_ShieldShocker::Shoot()

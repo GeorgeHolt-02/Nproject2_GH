@@ -217,10 +217,13 @@ void ABaseEnemy::OnOverlapStart(UPrimitiveComponent* OverlappedComponent, AActor
 		}
 		else
 		{
-			APlayerShot* MyShot = Cast<APlayerShot>(OtherActor);
-			if(MyShot)
+			if((OverlappedComponent->GetCollisionObjectType() == ECC_GameTraceChannel7) || (OverlappedComponent->GetCollisionObjectType() == ECC_GameTraceChannel8))
 			{
-				DamageFunction(MyShot->Damage);
+				APlayerShot* MyShot = Cast<APlayerShot>(OtherActor);
+				if(MyShot)
+				{
+					DamageFunction(MyShot->Damage);
+				}
 			}
 		}
 	}

@@ -58,12 +58,30 @@ void APlayerShot::Tick(float DeltaTime)
 void APlayerShot::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 	FVector NormalImpulse, const FHitResult& HitResult)
 {
-	if (IsValid(OtherComp))
+	if(OtherComp)
 	{
-		const ABaseEnemy* MyEnemy = Cast<ABaseEnemy>(OtherComp->GetAttachmentRootActor());
-		if(MyEnemy)
+		if((OtherComp->GetCollisionObjectType() == ECC_GameTraceChannel7) || (OtherComp->GetCollisionObjectType() == ECC_GameTraceChannel8))
 		{
-			Destroy();
+			const ABaseEnemy* MyEnemy = Cast<ABaseEnemy>(OtherComp->GetAttachmentRootActor());
+			if(MyEnemy)
+			{
+				Destroy();
+			}
+			else
+			{
+				if(Player)
+				{
+					Destroy();
+					Player->ScoreMultiplier_Current = 1.0f;
+					Player->MultiplierMeter_Current = 0.0f;
+					if(Player->PlayerHUD)
+					{
+						Player->PlayerHUD->SetMultiplier(Player->ScoreMultiplier_Current);
+						Player->PlayerHUD->SetMultiplierBuildUp(Player->MultiplierMeter_Current, Player->MultiplierMeter_NeededForIncrease);
+						Player->PlayerHUD->SetMultiplierCanvasOpacity(Player->ScoreMultiplier_Current);
+					}
+				}
+			}
 		}
 		else
 		{
@@ -81,29 +99,89 @@ void APlayerShot::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, U
 			}
 		}
 	}
-	else if (IsValid(OtherActor))
+	else
 	{
-		const ABaseEnemy* MyEnemy = Cast<ABaseEnemy>(OtherActor);
-		if(MyEnemy)
+		if(Player)
 		{
 			Destroy();
-		}
-		else
-		{
-			if(Player)
+			Player->ScoreMultiplier_Current = 1.0f;
+			Player->MultiplierMeter_Current = 0.0f;
+			if(Player->PlayerHUD)
 			{
-				Destroy();
-				Player->ScoreMultiplier_Current = 1.0f;
-				Player->MultiplierMeter_Current = 0.0f;
-				if(Player->PlayerHUD)
-				{
-					Player->PlayerHUD->SetMultiplier(Player->ScoreMultiplier_Current);
-					Player->PlayerHUD->SetMultiplierBuildUp(Player->MultiplierMeter_Current, Player->MultiplierMeter_NeededForIncrease);
-					Player->PlayerHUD->SetMultiplierCanvasOpacity(Player->ScoreMultiplier_Current);
-				}
+				Player->PlayerHUD->SetMultiplier(Player->ScoreMultiplier_Current);
+				Player->PlayerHUD->SetMultiplierBuildUp(Player->MultiplierMeter_Current, Player->MultiplierMeter_NeededForIncrease);
+				Player->PlayerHUD->SetMultiplierCanvasOpacity(Player->ScoreMultiplier_Current);
 			}
 		}
 	}
+	// if (IsValid(OtherComp))
+	// {
+	// 	const ABaseEnemy* MyEnemy = Cast<ABaseEnemy>(OtherComp->GetAttachmentRootActor());
+	// 	if(MyEnemy)
+	// 	{
+	// 		Destroy();
+	// 	}
+	// 	else
+	// 	{
+	// 		if(Player)
+	// 		{
+	// 			Destroy();
+	// 			Player->ScoreMultiplier_Current = 1.0f;
+	// 			Player->MultiplierMeter_Current = 0.0f;
+	// 			if(Player->PlayerHUD)
+	// 			{
+	// 				Player->PlayerHUD->SetMultiplier(Player->ScoreMultiplier_Current);
+	// 				Player->PlayerHUD->SetMultiplierBuildUp(Player->MultiplierMeter_Current, Player->MultiplierMeter_NeededForIncrease);
+	// 				Player->PlayerHUD->SetMultiplierCanvasOpacity(Player->ScoreMultiplier_Current);
+	// 			}
+	// 		}
+	// 	}
+	// }
+	// else if (IsValid(OtherActor))
+	// {
+	// 	const ABaseEnemy* MyEnemy = Cast<ABaseEnemy>(OtherActor);
+	// 	if(MyEnemy)
+	// 	{
+	// 		const UPrimitiveComponent* MyComponent = Cast<UPrimitiveComponent>(OtherComp);
+	// 		if(MyComponent)
+	// 		{
+	// 			if(MyComponent->GetCollisionObjectType() != ECC_GameTraceChannel11)
+	// 			{
+	// 				Destroy();
+	// 			}
+	// 			else
+	// 			{
+	// 				if(Player)
+	// 				{
+	// 					Destroy();
+	// 					Player->ScoreMultiplier_Current = 1.0f;
+	// 					Player->MultiplierMeter_Current = 0.0f;
+	// 					if(Player->PlayerHUD)
+	// 					{
+	// 						Player->PlayerHUD->SetMultiplier(Player->ScoreMultiplier_Current);
+	// 						Player->PlayerHUD->SetMultiplierBuildUp(Player->MultiplierMeter_Current, Player->MultiplierMeter_NeededForIncrease);
+	// 						Player->PlayerHUD->SetMultiplierCanvasOpacity(Player->ScoreMultiplier_Current);
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// 	else
+	// 	{
+	// 		if(Player)
+	// 		{
+	// 			Destroy();
+	// 			Player->ScoreMultiplier_Current = 1.0f;
+	// 			Player->MultiplierMeter_Current = 0.0f;
+	// 			if(Player->PlayerHUD)
+	// 			{
+	// 				Player->PlayerHUD->SetMultiplier(Player->ScoreMultiplier_Current);
+	// 				Player->PlayerHUD->SetMultiplierBuildUp(Player->MultiplierMeter_Current, Player->MultiplierMeter_NeededForIncrease);
+	// 				Player->PlayerHUD->SetMultiplierCanvasOpacity(Player->ScoreMultiplier_Current);
+	// 			}
+	// 		}
+	// 	}
+	// }
 }
 
 void APlayerShot::OnOverlapStart(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
