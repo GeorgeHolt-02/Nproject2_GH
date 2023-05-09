@@ -146,10 +146,23 @@ void AEnemy_Ballfrog::MainBehaviour(float DeltaTime)
 	
 	if(!GroundCheck)
 	{
-		Movement->Velocity = FVector(
-		-(Movement->Velocity.X),
-		-(Movement->Velocity.X),
-		Movement->Velocity.Z);
+		if(Player)
+		{
+			SetActorRotation(FRotator(
+				GetActorRotation().Pitch,
+				(GetActorRotation().Yaw + 180.0f),
+				GetActorRotation().Roll
+				));
+
+			YawRotator = FRotator(0.0f, GetActorRotation().Yaw, 0.0f);
+			Direction = FRotationMatrix(YawRotator).GetUnitAxis(EAxis::X);
+
+			Movement->Velocity = FVector(
+				FVector(CurrentGravity * Movement->InitialSpeed * Direction).X,
+				FVector(CurrentGravity * Movement->InitialSpeed * Direction).Y,
+				Movement->Velocity.Z);
+		
+		}
 	}
 		
 	SetActorLocation(OriginalPos);

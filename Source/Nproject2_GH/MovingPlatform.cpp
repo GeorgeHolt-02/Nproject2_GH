@@ -27,8 +27,8 @@ AMovingPlatform::AMovingPlatform()
 // Called when the game starts or when spawned
 void AMovingPlatform::BeginPlay()
 {
-	FOnTimelineFloat OnTimelineCallback;
-	FOnTimelineEventStatic OnTimelineFinishedCallback;
+	FOnTimelineFloat onTimelineCallback;
+	FOnTimelineEventStatic onTimelineFinishedCallback;
 	
 	Super::BeginPlay();
 
@@ -48,10 +48,10 @@ void AMovingPlatform::BeginPlay()
 
 		PlatformMover->SetPlaybackPosition(0.0f, false);
 
-		OnTimelineCallback.BindUFunction(this, FName{TEXT("TimelineCallback")});
-		OnTimelineFinishedCallback.BindUFunction(this, FName{TEXT("TimelineFinishedCallback")});
-		PlatformMover->AddInterpFloat(FloatCurve, OnTimelineCallback);
-		PlatformMover->SetTimelineFinishedFunc(OnTimelineFinishedCallback);
+		onTimelineCallback.BindUFunction(this, FName{TEXT("TimelineCallback")});
+		onTimelineFinishedCallback.BindUFunction(this, FName{TEXT("TimelineFinishedCallback")});
+		PlatformMover->AddInterpFloat(FloatCurve, onTimelineCallback);
+		PlatformMover->SetTimelineFinishedFunc(onTimelineFinishedCallback);
 
 		PlatformMover->RegisterComponent();
 	}
@@ -64,14 +64,14 @@ void AMovingPlatform::Move()
 	PlatformMover->SetPlayRate(1 / Duration);
 	PlatformMover->SetNewTime(StartingOffset);
 	PlatformMover->Play();
-	Alpha = PlatformMover->GetPlaybackPosition();
+	Alpha = 0.0f;
 	
 	SetActorLocation(PlatPath->Path->GetLocationAtDistanceAlongSpline(FMath::Lerp(0.0f, PlatPath->Path->GetSplineLength(), Alpha), ESplineCoordinateSpace::World));
 }
 
 void AMovingPlatform::TimelineCallback(float value)
 {
-	Alpha = PlatformMover->GetPlaybackPosition();
+	Alpha = value;
 
 	SetActorLocation(PlatPath->Path->GetLocationAtDistanceAlongSpline(FMath::Lerp(0.0f, PlatPath->Path->GetSplineLength(), Alpha), ESplineCoordinateSpace::World));
 }
