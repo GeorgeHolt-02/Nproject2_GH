@@ -26,6 +26,14 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UStaticMeshComponent* WingMeshR;
 
+	//** Speed at which to follow the player */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	float H_Speed;
+
+	//** Speed at which to move while crashing */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	float CrashSpeed;
+	
 	//** Z-speed to add on every "wing flap" */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	float FlapForce;
@@ -42,9 +50,43 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	float FlapThreshold;
 
-	//** Whether or not the enemy's dive has been activated *//
+	//** Radius in which enemy can be aggroed by the player's presence */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	float AggroRadius;
+
+	//** Crash toggle timer (handle and delay time, respectively) */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	FTimerHandle Handle_Crash;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	float CrashDelay;
+
+	//** Float representing destroy boundaries *//
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	float DestroyBoundValue;
+	
+	//** Whether or not the enemy should be in its normal behaviour pattern *//
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
-	bool bDiveModeActive;
+	bool bDefaultBehaviourOn;
+
+	//** Whether or not the enemy is currently in the midst of crashing *//
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	bool bCrashing;
+
+	//** Explosion Blueprint reference
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	TSubclassOf<class AExplosion> ExplosionBP;
+	
+	/** The enemy's current yaw rotator */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	FRotator YawRotator;
+
+	/** The direction the enemy is facing */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	FVector Direction;
+
+	/** Whether or not a given sweep is done purely for positioning purposes */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	bool bPositioningSweep;
 
 protected:
 	// Called when the game starts or when spawned
@@ -60,7 +102,13 @@ public:
 	virtual void MainBehaviour(float DeltaTime) override;
 	virtual void DamageFunction(float Damage) override;
 
-	// UFUNCTION()
-	// virtual void OnOverlapStart(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
-	// 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) override;
+	void NormalMovement(float DeltaTime);
+	void CrashMovement(float DeltaTime);
+
+	void OutOfBounds();
+
+	void CrashToggle();
+	
+	virtual void OnOverlapStart(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+		UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) override;
 };

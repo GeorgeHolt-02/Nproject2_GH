@@ -13,6 +13,7 @@
 #include "D:/2001070/NP2/Github/Nproject2_GH/Intermediate/Build/Win64/UnrealEditor/Inc/Nproject2_GH/Enemy_FlyingTurret.gen.cpp"
 #include "D:/2001070/NP2/Github/Nproject2_GH/Intermediate/Build/Win64/UnrealEditor/Inc/Nproject2_GH/Enemy_MuscleGrunt.gen.cpp"
 #include "D:/2001070/NP2/Github/Nproject2_GH/Intermediate/Build/Win64/UnrealEditor/Inc/Nproject2_GH/Enemy_ShieldShocker.gen.cpp"
+#include "D:/2001070/NP2/Github/Nproject2_GH/Intermediate/Build/Win64/UnrealEditor/Inc/Nproject2_GH/Explosion.gen.cpp"
 #include "D:/2001070/NP2/Github/Nproject2_GH/Intermediate/Build/Win64/UnrealEditor/Inc/Nproject2_GH/FireGeyser.gen.cpp"
 #include "D:/2001070/NP2/Github/Nproject2_GH/Intermediate/Build/Win64/UnrealEditor/Inc/Nproject2_GH/MovingPlatform.gen.cpp"
 #include "D:/2001070/NP2/Github/Nproject2_GH/Intermediate/Build/Win64/UnrealEditor/Inc/Nproject2_GH/MyGameInstance.gen.cpp"

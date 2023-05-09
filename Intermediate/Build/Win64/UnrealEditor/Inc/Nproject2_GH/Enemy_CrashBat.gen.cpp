@@ -14,6 +14,11 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_CrashBat() {}
 	NPROJECT2_GH_API UClass* Z_Construct_UClass_ABaseEnemy();
 	UPackage* Z_Construct_UPackage__Script_Nproject2_GH();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
+	ENGINE_API UScriptStruct* Z_Construct_UScriptStruct_FTimerHandle();
+	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
+	NPROJECT2_GH_API UClass* Z_Construct_UClass_AExplosion_NoRegister();
+	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FRotator();
+	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 // End Cross Module References
 	void AEnemy_CrashBat::StaticRegisterNativesAEnemy_CrashBat()
 	{
@@ -42,6 +47,14 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_CrashBat() {}
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_WingMeshR;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_H_Speed_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_H_Speed;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_CrashSpeed_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_CrashSpeed;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_FlapForce_MetaData[];
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_FlapForce;
@@ -58,10 +71,48 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_CrashBat() {}
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_FlapThreshold;
 #if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam NewProp_bDiveModeActive_MetaData[];
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_AggroRadius_MetaData[];
 #endif
-		static void NewProp_bDiveModeActive_SetBit(void* Obj);
-		static const UECodeGen_Private::FBoolPropertyParams NewProp_bDiveModeActive;
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_AggroRadius;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_Handle_Crash_MetaData[];
+#endif
+		static const UECodeGen_Private::FStructPropertyParams NewProp_Handle_Crash;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_CrashDelay_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_CrashDelay;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_DestroyBoundValue_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_DestroyBoundValue;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_bDefaultBehaviourOn_MetaData[];
+#endif
+		static void NewProp_bDefaultBehaviourOn_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_bDefaultBehaviourOn;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_bCrashing_MetaData[];
+#endif
+		static void NewProp_bCrashing_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_bCrashing;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_ExplosionBP_MetaData[];
+#endif
+		static const UECodeGen_Private::FClassPropertyParams NewProp_ExplosionBP;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_YawRotator_MetaData[];
+#endif
+		static const UECodeGen_Private::FStructPropertyParams NewProp_YawRotator;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_Direction_MetaData[];
+#endif
+		static const UECodeGen_Private::FStructPropertyParams NewProp_Direction;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_bPositioningSweep_MetaData[];
+#endif
+		static void NewProp_bPositioningSweep_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_bPositioningSweep;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -104,6 +155,24 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_CrashBat() {}
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_WingMeshR = { "WingMeshR", nullptr, (EPropertyFlags)0x001000000009001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_CrashBat, WingMeshR), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_WingMeshR_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_WingMeshR_MetaData)) };
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_H_Speed_MetaData[] = {
+		{ "Category", "Enemy_CrashBat" },
+		{ "Comment", "//** Speed at which to follow the player */\n" },
+		{ "ModuleRelativePath", "Enemy_CrashBat.h" },
+		{ "ToolTip", "/ Speed at which to follow the player" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_H_Speed = { "H_Speed", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_CrashBat, H_Speed), METADATA_PARAMS(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_H_Speed_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_H_Speed_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashSpeed_MetaData[] = {
+		{ "Category", "Enemy_CrashBat" },
+		{ "Comment", "//** Speed at which to move while crashing */\n" },
+		{ "ModuleRelativePath", "Enemy_CrashBat.h" },
+		{ "ToolTip", "/ Speed at which to move while crashing" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashSpeed = { "CrashSpeed", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_CrashBat, CrashSpeed), METADATA_PARAMS(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashSpeed_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashSpeed_MetaData)) };
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_FlapForce_MetaData[] = {
 		{ "Category", "Enemy_CrashBat" },
 		{ "Comment", "//** Z-speed to add on every \"wing flap\" */\n" },
@@ -140,27 +209,125 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_CrashBat() {}
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_FlapThreshold = { "FlapThreshold", nullptr, (EPropertyFlags)0x0010000000020005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_CrashBat, FlapThreshold), METADATA_PARAMS(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_FlapThreshold_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_FlapThreshold_MetaData)) };
 #if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bDiveModeActive_MetaData[] = {
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_AggroRadius_MetaData[] = {
 		{ "Category", "Enemy_CrashBat" },
-		{ "Comment", "//** Whether or not the enemy's dive has been activated *//\n" },
+		{ "Comment", "//** Radius in which enemy can be aggroed by the player's presence */\n" },
 		{ "ModuleRelativePath", "Enemy_CrashBat.h" },
-		{ "ToolTip", "/ Whether or not the enemy's dive has been activated /" },
+		{ "ToolTip", "/ Radius in which enemy can be aggroed by the player's presence" },
 	};
 #endif
-	void Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bDiveModeActive_SetBit(void* Obj)
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_AggroRadius = { "AggroRadius", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_CrashBat, AggroRadius), METADATA_PARAMS(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_AggroRadius_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_AggroRadius_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_Handle_Crash_MetaData[] = {
+		{ "Category", "Enemy_CrashBat" },
+		{ "Comment", "//** Crash toggle timer (handle and delay time, respectively) */\n" },
+		{ "ModuleRelativePath", "Enemy_CrashBat.h" },
+		{ "ToolTip", "/ Crash toggle timer (handle and delay time, respectively)" },
+	};
+#endif
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_Handle_Crash = { "Handle_Crash", nullptr, (EPropertyFlags)0x0010000000020015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_CrashBat, Handle_Crash), Z_Construct_UScriptStruct_FTimerHandle, METADATA_PARAMS(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_Handle_Crash_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_Handle_Crash_MetaData)) }; // 589591453
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashDelay_MetaData[] = {
+		{ "Category", "Enemy_CrashBat" },
+		{ "ModuleRelativePath", "Enemy_CrashBat.h" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashDelay = { "CrashDelay", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_CrashBat, CrashDelay), METADATA_PARAMS(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashDelay_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashDelay_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_DestroyBoundValue_MetaData[] = {
+		{ "Category", "Enemy_CrashBat" },
+		{ "Comment", "//** Float representing destroy boundaries *//\n" },
+		{ "ModuleRelativePath", "Enemy_CrashBat.h" },
+		{ "ToolTip", "/ Float representing destroy boundaries /" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_DestroyBoundValue = { "DestroyBoundValue", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_CrashBat, DestroyBoundValue), METADATA_PARAMS(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_DestroyBoundValue_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_DestroyBoundValue_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bDefaultBehaviourOn_MetaData[] = {
+		{ "Category", "Enemy_CrashBat" },
+		{ "Comment", "//** Whether or not the enemy should be in its normal behaviour pattern *//\n" },
+		{ "ModuleRelativePath", "Enemy_CrashBat.h" },
+		{ "ToolTip", "/ Whether or not the enemy should be in its normal behaviour pattern /" },
+	};
+#endif
+	void Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bDefaultBehaviourOn_SetBit(void* Obj)
 	{
-		((AEnemy_CrashBat*)Obj)->bDiveModeActive = 1;
+		((AEnemy_CrashBat*)Obj)->bDefaultBehaviourOn = 1;
 	}
-	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bDiveModeActive = { "bDiveModeActive", nullptr, (EPropertyFlags)0x0010000000020005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(AEnemy_CrashBat), &Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bDiveModeActive_SetBit, METADATA_PARAMS(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bDiveModeActive_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bDiveModeActive_MetaData)) };
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bDefaultBehaviourOn = { "bDefaultBehaviourOn", nullptr, (EPropertyFlags)0x0010000000020005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(AEnemy_CrashBat), &Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bDefaultBehaviourOn_SetBit, METADATA_PARAMS(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bDefaultBehaviourOn_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bDefaultBehaviourOn_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bCrashing_MetaData[] = {
+		{ "Category", "Enemy_CrashBat" },
+		{ "Comment", "//** Whether or not the enemy is currently in the midst of crashing *//\n" },
+		{ "ModuleRelativePath", "Enemy_CrashBat.h" },
+		{ "ToolTip", "/ Whether or not the enemy is currently in the midst of crashing /" },
+	};
+#endif
+	void Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bCrashing_SetBit(void* Obj)
+	{
+		((AEnemy_CrashBat*)Obj)->bCrashing = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bCrashing = { "bCrashing", nullptr, (EPropertyFlags)0x0010000000020005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(AEnemy_CrashBat), &Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bCrashing_SetBit, METADATA_PARAMS(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bCrashing_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bCrashing_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_ExplosionBP_MetaData[] = {
+		{ "Category", "Enemy_CrashBat" },
+		{ "Comment", "//** Explosion Blueprint reference\n" },
+		{ "ModuleRelativePath", "Enemy_CrashBat.h" },
+		{ "ToolTip", "/ Explosion Blueprint reference" },
+	};
+#endif
+	const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_ExplosionBP = { "ExplosionBP", nullptr, (EPropertyFlags)0x0014000000010015, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_CrashBat, ExplosionBP), Z_Construct_UClass_AExplosion_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_ExplosionBP_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_ExplosionBP_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_YawRotator_MetaData[] = {
+		{ "Category", "Enemy_CrashBat" },
+		{ "Comment", "/** The enemy's current yaw rotator */" },
+		{ "ModuleRelativePath", "Enemy_CrashBat.h" },
+		{ "ToolTip", "The enemy's current yaw rotator" },
+	};
+#endif
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_YawRotator = { "YawRotator", nullptr, (EPropertyFlags)0x0010000000020015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_CrashBat, YawRotator), Z_Construct_UScriptStruct_FRotator, METADATA_PARAMS(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_YawRotator_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_YawRotator_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_Direction_MetaData[] = {
+		{ "Category", "Enemy_CrashBat" },
+		{ "Comment", "/** The direction the enemy is facing */" },
+		{ "ModuleRelativePath", "Enemy_CrashBat.h" },
+		{ "ToolTip", "The direction the enemy is facing" },
+	};
+#endif
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_Direction = { "Direction", nullptr, (EPropertyFlags)0x0010000000020015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_CrashBat, Direction), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_Direction_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_Direction_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bPositioningSweep_MetaData[] = {
+		{ "Category", "Enemy_CrashBat" },
+		{ "Comment", "/** Whether or not a given sweep is done purely for positioning purposes */" },
+		{ "ModuleRelativePath", "Enemy_CrashBat.h" },
+		{ "ToolTip", "Whether or not a given sweep is done purely for positioning purposes" },
+	};
+#endif
+	void Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bPositioningSweep_SetBit(void* Obj)
+	{
+		((AEnemy_CrashBat*)Obj)->bPositioningSweep = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bPositioningSweep = { "bPositioningSweep", nullptr, (EPropertyFlags)0x0010000000020005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, sizeof(bool), sizeof(AEnemy_CrashBat), &Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bPositioningSweep_SetBit, METADATA_PARAMS(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bPositioningSweep_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bPositioningSweep_MetaData)) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AEnemy_CrashBat_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_BaseMesh,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_WingMeshL,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_WingMeshR,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_H_Speed,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashSpeed,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_FlapForce,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_Gravity,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_FallSpeed,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_FlapThreshold,
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bDiveModeActive,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_AggroRadius,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_Handle_Crash,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashDelay,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_DestroyBoundValue,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bDefaultBehaviourOn,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bCrashing,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_ExplosionBP,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_YawRotator,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_Direction,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_bPositioningSweep,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AEnemy_CrashBat_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AEnemy_CrashBat>::IsAbstract,
@@ -198,9 +365,9 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_CrashBat() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_CrashBat_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AEnemy_CrashBat, AEnemy_CrashBat::StaticClass, TEXT("AEnemy_CrashBat"), &Z_Registration_Info_UClass_AEnemy_CrashBat, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemy_CrashBat), 4173410810U) },
+		{ Z_Construct_UClass_AEnemy_CrashBat, AEnemy_CrashBat::StaticClass, TEXT("AEnemy_CrashBat"), &Z_Registration_Info_UClass_AEnemy_CrashBat, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemy_CrashBat), 1500136940U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_CrashBat_h_3392260156(TEXT("/Script/Nproject2_GH"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_CrashBat_h_3046740410(TEXT("/Script/Nproject2_GH"),
 		Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_CrashBat_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_CrashBat_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

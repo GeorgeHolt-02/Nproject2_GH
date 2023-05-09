@@ -13,6 +13,7 @@
 #include "D:/2001070/NP2/Github/Nproject2_GH/Source/Nproject2_GH/Enemy_FlyingTurret.cpp"
 #include "D:/2001070/NP2/Github/Nproject2_GH/Source/Nproject2_GH/Enemy_MuscleGrunt.cpp"
 #include "D:/2001070/NP2/Github/Nproject2_GH/Source/Nproject2_GH/Enemy_ShieldShocker.cpp"
+#include "D:/2001070/NP2/Github/Nproject2_GH/Source/Nproject2_GH/Explosion.cpp"
 #include "D:/2001070/NP2/Github/Nproject2_GH/Source/Nproject2_GH/FireGeyser.cpp"
 #include "D:/2001070/NP2/Github/Nproject2_GH/Source/Nproject2_GH/MovingPlatform.cpp"
 #include "D:/2001070/NP2/Github/Nproject2_GH/Source/Nproject2_GH/MyGameInstance.cpp"
