@@ -1,11 +1,11 @@
 {
     "Version": "1.1",
     "Data": {
-        "Source": "d:\\2001070\\np2\\github\\nproject2_gh\\plugins\\developer\\riderlink\\source\\rd\\rd.cpp",
+        "Source": "d:\\2001070\\github\\nproject2_gh\\plugins\\developer\\riderlink\\source\\rd\\rd.cpp",
         "ProvidedModule": "",
         "Includes": [
-            "d:\\2001070\\np2\\github\\nproject2_gh\\plugins\\developer\\riderlink\\intermediate\\build\\win64\\unrealeditor\\development\\rd\\definitions.h",
-            "d:\\2001070\\np2\\github\\nproject2_gh\\plugins\\developer\\riderlink\\source\\rd\\rd.h",
+            "d:\\2001070\\github\\nproject2_gh\\plugins\\developer\\riderlink\\intermediate\\build\\win64\\unrealeditor\\development\\rd\\definitions.h",
+            "d:\\2001070\\github\\nproject2_gh\\plugins\\developer\\riderlink\\source\\rd\\rd.h",
             "c:\\program files\\epic games\\ue_5.0\\engine\\source\\runtime\\core\\public\\logging\\logmacros.h",
             "c:\\program files\\epic games\\ue_5.0\\engine\\source\\runtime\\core\\public\\coretypes.h",
             "c:\\program files\\epic games\\ue_5.0\\engine\\source\\runtime\\core\\public\\hal\\platform.h",

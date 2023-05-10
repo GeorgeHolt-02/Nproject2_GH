@@ -51,9 +51,17 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_CrashBat() {}
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_H_Speed;
 #if WITH_METADATA
-		static const UECodeGen_Private::FMetaDataPairParam NewProp_CrashSpeed_MetaData[];
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_CrashSpeed_Current_MetaData[];
 #endif
-		static const UECodeGen_Private::FFloatPropertyParams NewProp_CrashSpeed;
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_CrashSpeed_Current;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_CrashSpeed_Max_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_CrashSpeed_Max;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_AccelRate_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_AccelRate;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_FlapForce_MetaData[];
 #endif
@@ -162,16 +170,32 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_CrashBat() {}
 		{ "ToolTip", "/ Speed at which to follow the player" },
 	};
 #endif
-	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_H_Speed = { "H_Speed", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_CrashBat, H_Speed), METADATA_PARAMS(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_H_Speed_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_H_Speed_MetaData)) };
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_H_Speed = { "H_Speed", nullptr, (EPropertyFlags)0x0010000000020005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_CrashBat, H_Speed), METADATA_PARAMS(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_H_Speed_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_H_Speed_MetaData)) };
 #if WITH_METADATA
-	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashSpeed_MetaData[] = {
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashSpeed_Current_MetaData[] = {
 		{ "Category", "Enemy_CrashBat" },
-		{ "Comment", "//** Speed at which to move while crashing */\n" },
+		{ "Comment", "//** Speed at which to move while crashing, current and max, respectively */\n" },
 		{ "ModuleRelativePath", "Enemy_CrashBat.h" },
-		{ "ToolTip", "/ Speed at which to move while crashing" },
+		{ "ToolTip", "/ Speed at which to move while crashing, current and max, respectively" },
 	};
 #endif
-	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashSpeed = { "CrashSpeed", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_CrashBat, CrashSpeed), METADATA_PARAMS(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashSpeed_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashSpeed_MetaData)) };
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashSpeed_Current = { "CrashSpeed_Current", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_CrashBat, CrashSpeed_Current), METADATA_PARAMS(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashSpeed_Current_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashSpeed_Current_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashSpeed_Max_MetaData[] = {
+		{ "Category", "Enemy_CrashBat" },
+		{ "ModuleRelativePath", "Enemy_CrashBat.h" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashSpeed_Max = { "CrashSpeed_Max", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_CrashBat, CrashSpeed_Max), METADATA_PARAMS(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashSpeed_Max_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashSpeed_Max_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_AccelRate_MetaData[] = {
+		{ "Category", "Enemy_CrashBat" },
+		{ "Comment", "//** Rate of acceleration when crashing */\n" },
+		{ "ModuleRelativePath", "Enemy_CrashBat.h" },
+		{ "ToolTip", "/ Rate of acceleration when crashing" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_AccelRate = { "AccelRate", nullptr, (EPropertyFlags)0x0010000000010005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_CrashBat, AccelRate), METADATA_PARAMS(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_AccelRate_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_AccelRate_MetaData)) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_FlapForce_MetaData[] = {
 		{ "Category", "Enemy_CrashBat" },
@@ -313,7 +337,9 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_CrashBat() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_WingMeshL,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_WingMeshR,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_H_Speed,
-		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashSpeed,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashSpeed_Current,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_CrashSpeed_Max,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_AccelRate,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_FlapForce,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_Gravity,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_CrashBat_Statics::NewProp_FallSpeed,
@@ -365,9 +391,9 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_CrashBat() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_CrashBat_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AEnemy_CrashBat, AEnemy_CrashBat::StaticClass, TEXT("AEnemy_CrashBat"), &Z_Registration_Info_UClass_AEnemy_CrashBat, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemy_CrashBat), 1500136940U) },
+		{ Z_Construct_UClass_AEnemy_CrashBat, AEnemy_CrashBat::StaticClass, TEXT("AEnemy_CrashBat"), &Z_Registration_Info_UClass_AEnemy_CrashBat, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemy_CrashBat), 2274198675U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_CrashBat_h_3046740410(TEXT("/Script/Nproject2_GH"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_CrashBat_h_4017937107(TEXT("/Script/Nproject2_GH"),
 		Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_CrashBat_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_CrashBat_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

@@ -51,6 +51,10 @@ void EmptyLinkFunctionForGeneratedCodeFireGeyser() {}
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_ToggleDelay;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_ToggleStartingDelay_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_ToggleStartingDelay;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_Handle_FireRate_MetaData[];
 #endif
 		static const UECodeGen_Private::FStructPropertyParams NewProp_Handle_FireRate;
@@ -125,6 +129,15 @@ void EmptyLinkFunctionForGeneratedCodeFireGeyser() {}
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AFireGeyser_Statics::NewProp_ToggleDelay = { "ToggleDelay", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AFireGeyser, ToggleDelay), METADATA_PARAMS(Z_Construct_UClass_AFireGeyser_Statics::NewProp_ToggleDelay_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AFireGeyser_Statics::NewProp_ToggleDelay_MetaData)) };
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFireGeyser_Statics::NewProp_ToggleStartingDelay_MetaData[] = {
+		{ "Category", "FireGeyser" },
+		{ "Comment", "/** Starting delay for the toggle */" },
+		{ "ModuleRelativePath", "FireGeyser.h" },
+		{ "ToolTip", "Starting delay for the toggle" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AFireGeyser_Statics::NewProp_ToggleStartingDelay = { "ToggleStartingDelay", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AFireGeyser, ToggleStartingDelay), METADATA_PARAMS(Z_Construct_UClass_AFireGeyser_Statics::NewProp_ToggleStartingDelay_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AFireGeyser_Statics::NewProp_ToggleStartingDelay_MetaData)) };
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AFireGeyser_Statics::NewProp_Handle_FireRate_MetaData[] = {
 		{ "Category", "FireGeyser" },
 		{ "Comment", "/** Timer representing rate of fire (handle and delay time) */" },
@@ -181,6 +194,7 @@ void EmptyLinkFunctionForGeneratedCodeFireGeyser() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFireGeyser_Statics::NewProp_FireballOrigin,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFireGeyser_Statics::NewProp_Handle_Toggle,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFireGeyser_Statics::NewProp_ToggleDelay,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFireGeyser_Statics::NewProp_ToggleStartingDelay,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFireGeyser_Statics::NewProp_Handle_FireRate,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFireGeyser_Statics::NewProp_FireRate,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AFireGeyser_Statics::NewProp_WarningThreshold,
@@ -224,9 +238,9 @@ void EmptyLinkFunctionForGeneratedCodeFireGeyser() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_FireGeyser_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AFireGeyser, AFireGeyser::StaticClass, TEXT("AFireGeyser"), &Z_Registration_Info_UClass_AFireGeyser, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFireGeyser), 1946285485U) },
+		{ Z_Construct_UClass_AFireGeyser, AFireGeyser::StaticClass, TEXT("AFireGeyser"), &Z_Registration_Info_UClass_AFireGeyser, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AFireGeyser), 1274329490U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_FireGeyser_h_3075742021(TEXT("/Script/Nproject2_GH"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_FireGeyser_h_2770736783(TEXT("/Script/Nproject2_GH"),
 		Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_FireGeyser_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_FireGeyser_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

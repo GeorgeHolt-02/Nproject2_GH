@@ -27,12 +27,18 @@ public:
 	UStaticMeshComponent* WingMeshR;
 
 	//** Speed at which to follow the player */
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	float H_Speed;
 
-	//** Speed at which to move while crashing */
+	//** Speed at which to move while crashing, current and max, respectively */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	float CrashSpeed;
+	float CrashSpeed_Current;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	float CrashSpeed_Max;
+
+	//** Rate of acceleration when crashing */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	float AccelRate;
 	
 	//** Z-speed to add on every "wing flap" */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)

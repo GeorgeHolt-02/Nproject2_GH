@@ -21,7 +21,9 @@ AEnemy_CrashBat::AEnemy_CrashBat()
 	WingMeshR->SetupAttachment(BaseMesh);
 
 	H_Speed = 500.0f;
-	CrashSpeed = 1000.0f;
+	CrashSpeed_Current = 0.0f;
+	CrashSpeed_Max = 1000.0f;
+	AccelRate = 50.0f;
 	FlapForce = 500.0f;
 	Gravity = 43.75f;
 	FallSpeed = 0.0f;
@@ -177,6 +179,11 @@ void AEnemy_CrashBat::NormalMovement(float DeltaTime)
 		if(GetActorLocation().Z < FlapThreshold)
 		{
 			FallSpeed = FlapForce;
+			if(GetWorldTimerManager().TimerExists(Handle_Crash))
+			{
+				GetWorldTimerManager().ClearTimer(Handle_Crash);
+				Handle_Crash.Invalidate();
+			}
 		}
 
 		if(Player)
@@ -197,7 +204,6 @@ void AEnemy_CrashBat::NormalMovement(float DeltaTime)
 				if(FVector::Dist(GetActorLocation(), Player->GetActorLocation()) < AggroRadius)
 				{
 					bDefaultBehaviourOn = false;
-					GetWorldTimerManager().SetTimer(Handle_Crash, this, &AEnemy_CrashBat::CrashToggle, CrashDelay, false);
 				}
 			}
 		}
@@ -210,6 +216,22 @@ void AEnemy_CrashBat::NormalMovement(float DeltaTime)
 				GetActorLocation().X,
 				GetActorLocation().Y,
 				FlapThreshold));
+
+			if(!(bCrashing))
+			{
+				if(!(GetWorldTimerManager().TimerExists(Handle_Crash)))
+				{
+					GetWorldTimerManager().SetTimer(Handle_Crash, this, &AEnemy_CrashBat::CrashToggle, CrashDelay, false);
+				}
+			}
+		}
+		else
+		{
+			if(GetWorldTimerManager().TimerExists(Handle_Crash))
+			{
+				GetWorldTimerManager().ClearTimer(Handle_Crash);
+				Handle_Crash.Invalidate();
+			}
 		}
 		
 		if(Player)
@@ -230,7 +252,8 @@ void AEnemy_CrashBat::NormalMovement(float DeltaTime)
 
 void AEnemy_CrashBat::CrashMovement(float DeltaTime)
 {
-	SetActorLocation(GetActorLocation() + (CrashSpeed * Direction * DeltaTime));
+	SetActorLocation(GetActorLocation() + (CrashSpeed_Current * Direction * DeltaTime));
+	CrashSpeed_Current += FMath::Clamp((FMath::Square(AccelRate) * DeltaTime), 0.0f, CrashSpeed_Max);
 }
 
 void AEnemy_CrashBat::OutOfBounds()

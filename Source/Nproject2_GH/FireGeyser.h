@@ -28,6 +28,9 @@ public:
 	FTimerHandle Handle_Toggle;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	float ToggleDelay;
+	/** Starting delay for the toggle */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	float ToggleStartingDelay;
 
 	/** Timer representing rate of fire (handle and delay time) */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)

@@ -19,6 +19,7 @@ AFireGeyser::AFireGeyser()
 
 	Handle_Toggle;
 	ToggleDelay = 3.0f;
+	ToggleStartingDelay = -1;
 
 	Handle_FireRate;
 	FireRate = 0.075f;
@@ -30,8 +31,8 @@ AFireGeyser::AFireGeyser()
 void AFireGeyser::BeginPlay()
 {
 	Super::BeginPlay();
-
-	GetWorldTimerManager().SetTimer(Handle_Toggle, this, &AFireGeyser::FlameToggle, ToggleDelay, true);
+	
+	GetWorldTimerManager().SetTimer(Handle_Toggle, this, &AFireGeyser::FlameToggle, ToggleDelay, true, ToggleStartingDelay);
 }
 
 void AFireGeyser::FlameToggle()
