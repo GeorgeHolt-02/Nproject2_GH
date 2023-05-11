@@ -40,6 +40,10 @@ public:
 	/** The currently-selected float from the above array */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	float CurrentGravity;
+
+	/** Length of the line trace used to determine whether or not to turn around */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	float TraceLength;
 	
 	/** The enemy's current yaw rotator */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)

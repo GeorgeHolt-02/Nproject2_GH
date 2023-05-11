@@ -32,6 +32,8 @@ AEnemy_Ballfrog::AEnemy_Ballfrog()
 	GravityScales = {3.0f, 3.0f, 3.0f, 1.0f};
 	CurrentGravity = 1.0f;
 
+	TraceLength = 500.0f;
+	
 	YawRotator = FRotator(0.0f, 0.0f, 0.0f);
 	Direction = FVector(0.0f, 0.0f, 0.0f);
 }
@@ -52,6 +54,8 @@ void AEnemy_Ballfrog::BeginPlay()
 	Movement->OnProjectileBounce.AddDynamic(this, &AEnemy_Ballfrog::OnBounce);
 
 	FacePlayer();
+
+	
 }
 
 void AEnemy_Ballfrog::StartInvulnPeriod()
@@ -138,10 +142,10 @@ void AEnemy_Ballfrog::MainBehaviour(float DeltaTime)
 	SetActorLocation(GetActorLocation() + (EnemySphereCollider->GetScaledSphereRadius() * Direction));
 	
 	bool GroundCheck = GetWorld()->LineTraceSingleByChannel(GroundCheckHit, GetActorLocation(),
-	GetActorLocation() + FVector(0.0f, 0.0f, -((EnemySphereCollider->GetScaledSphereRadius() / 2) * (BounceVelocity / CurrentGravity))),
+	GetActorLocation() + FVector(0.0f, 0.0f, -TraceLength),
 		ECC_GameTraceChannel10, FCollisionQueryParams::DefaultQueryParam, FCollisionResponseParams::DefaultResponseParam);
 	// DrawDebugLine(GetWorld(), GetActorLocation(),
-	// 	GetActorLocation() + FVector(0.0f, 0.0f, -((EnemySphereCollider->GetScaledSphereRadius() / 2) * (BounceVelocity / CurrentGravity))),
+	// 	GetActorLocation() + FVector(0.0f, 0.0f, -TraceLength),
 	// 			FColor::Yellow, false, 1.0f, 0, 5.0f);
 	
 	if(!GroundCheck)
@@ -166,6 +170,8 @@ void AEnemy_Ballfrog::MainBehaviour(float DeltaTime)
 	}
 		
 	SetActorLocation(OriginalPos);
+
+	
 }
 
 void AEnemy_Ballfrog::DamageFunction(float Damage)
