@@ -610,7 +610,7 @@ void APlayerChar::PlayerDeath()
 		GetWorldTimerManager().ClearTimer(CurrentGameInstance->Handle_NextLevelTimer);
 		CurrentGameInstance->Handle_NextLevelTimer.Invalidate();
 		CurrentGameInstance->bPlayerDead = true;
-		GetWorldTimerManager().SetTimer(CurrentGameInstance->Handle_RestartTimer, CurrentGameInstance, &UMyGameInstance::StartRestartTimer, 5.0f, false);
+		GetWorldTimerManager().SetTimer(CurrentGameInstance->Handle_RestartTimer, CurrentGameInstance, &UMyGameInstance::StartRestartTimer, 2.5f, false);
 	}
 	Blaster->Mesh->SetCollisionObjectType(ECC_PhysicsBody);
 	Blaster->Mesh->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);

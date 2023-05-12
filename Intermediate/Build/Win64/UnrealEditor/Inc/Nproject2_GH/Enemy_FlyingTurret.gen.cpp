@@ -20,6 +20,7 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_FlyingTurret() {}
 	NPROJECT2_GH_API UClass* Z_Construct_UClass_AEnemyProjectile_FlyingTurret_NoRegister();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FRotator();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
+	ENGINE_API UClass* Z_Construct_UClass_UMaterialInterface_NoRegister();
 // End Cross Module References
 	void AEnemy_FlyingTurret::StaticRegisterNativesAEnemy_FlyingTurret()
 	{
@@ -93,6 +94,14 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_FlyingTurret() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_TurretInterval_TimeLeft_MetaData[];
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_TurretInterval_TimeLeft;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_DefaultMat_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_DefaultMat;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_WarningMat_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_WarningMat;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -238,6 +247,24 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_FlyingTurret() {}
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_FlyingTurret_Statics::NewProp_TurretInterval_TimeLeft = { "TurretInterval_TimeLeft", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_FlyingTurret, TurretInterval_TimeLeft), METADATA_PARAMS(Z_Construct_UClass_AEnemy_FlyingTurret_Statics::NewProp_TurretInterval_TimeLeft_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_FlyingTurret_Statics::NewProp_TurretInterval_TimeLeft_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_FlyingTurret_Statics::NewProp_DefaultMat_MetaData[] = {
+		{ "Category", "Enemy_FlyingTurret" },
+		{ "Comment", "/** Default material reference */" },
+		{ "ModuleRelativePath", "Enemy_FlyingTurret.h" },
+		{ "ToolTip", "Default material reference" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AEnemy_FlyingTurret_Statics::NewProp_DefaultMat = { "DefaultMat", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_FlyingTurret, DefaultMat), Z_Construct_UClass_UMaterialInterface_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AEnemy_FlyingTurret_Statics::NewProp_DefaultMat_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_FlyingTurret_Statics::NewProp_DefaultMat_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_FlyingTurret_Statics::NewProp_WarningMat_MetaData[] = {
+		{ "Category", "Enemy_FlyingTurret" },
+		{ "Comment", "/** Warning material reference */" },
+		{ "ModuleRelativePath", "Enemy_FlyingTurret.h" },
+		{ "ToolTip", "Warning material reference" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AEnemy_FlyingTurret_Statics::NewProp_WarningMat = { "WarningMat", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_FlyingTurret, WarningMat), Z_Construct_UClass_UMaterialInterface_NoRegister, METADATA_PARAMS(Z_Construct_UClass_AEnemy_FlyingTurret_Statics::NewProp_WarningMat_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_FlyingTurret_Statics::NewProp_WarningMat_MetaData)) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AEnemy_FlyingTurret_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_FlyingTurret_Statics::NewProp_EnemyBaseMesh,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_FlyingTurret_Statics::NewProp_EnemyCannonMesh,
@@ -254,6 +281,8 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_FlyingTurret() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_FlyingTurret_Statics::NewProp_Direction,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_FlyingTurret_Statics::NewProp_TurretInterval,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_FlyingTurret_Statics::NewProp_TurretInterval_TimeLeft,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_FlyingTurret_Statics::NewProp_DefaultMat,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_FlyingTurret_Statics::NewProp_WarningMat,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AEnemy_FlyingTurret_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<AEnemy_FlyingTurret>::IsAbstract,
@@ -291,9 +320,9 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_FlyingTurret() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_FlyingTurret_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AEnemy_FlyingTurret, AEnemy_FlyingTurret::StaticClass, TEXT("AEnemy_FlyingTurret"), &Z_Registration_Info_UClass_AEnemy_FlyingTurret, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemy_FlyingTurret), 1210275215U) },
+		{ Z_Construct_UClass_AEnemy_FlyingTurret, AEnemy_FlyingTurret::StaticClass, TEXT("AEnemy_FlyingTurret"), &Z_Registration_Info_UClass_AEnemy_FlyingTurret, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemy_FlyingTurret), 3877340580U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_FlyingTurret_h_4237736366(TEXT("/Script/Nproject2_GH"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_FlyingTurret_h_837616502(TEXT("/Script/Nproject2_GH"),
 		Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_FlyingTurret_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_FlyingTurret_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

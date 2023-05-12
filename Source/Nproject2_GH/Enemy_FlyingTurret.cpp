@@ -136,13 +136,24 @@ void AEnemy_FlyingTurret::MainBehaviour(float DeltaTime)
 			
 			if (TurretInterval_TimeLeft <= 0.0f)
 			{
-				if((InvulnTime_Current <= 0.0f) && (!bCanShoot))
+				if((InvulnTime_Current <= 0.0f) && (!bCanShoot) && (TurretInterval_TimeLeft <= 0.0f) && (MovementSpeed_Vertical < 0.0f))
 				{
 					bCanShoot = true;
 				}
 				if (MovementSpeed_Vertical < 0.0f)
 				{
+					if(WarningMat)
+					{
+						EnemyCannonMesh->SetMaterial(0, WarningMat);
+					}
 					Shoot();
+				}
+				else
+				{
+					if(DefaultMat)
+					{
+						EnemyCannonMesh->SetMaterial(0, DefaultMat);
+					}
 				}
 				YawRotator = FRotator(0.0f, GetActorRotation().Yaw, 0.0f);
 				Direction = FRotationMatrix(YawRotator).GetUnitAxis(EAxis::X);
@@ -152,6 +163,24 @@ void AEnemy_FlyingTurret::MainBehaviour(float DeltaTime)
 		}
 	}
 
+	if(MovementSpeed_Vertical < 0.0f && (InvulnTime_Current <= 0.0f))
+	{
+		if(WarningMat)
+		{
+			EnemyCannonMesh->SetMaterial(0, WarningMat);
+		}
+	}
+	else
+	{
+		if(EnemyCannonMesh->GetMaterial(0) != DefaultMat)
+		{
+			if(DefaultMat)
+			{
+				EnemyCannonMesh->SetMaterial(0, DefaultMat);
+			}
+		}
+	}
+	
 	SetActorLocation((GetActorLocation() + (Direction * DeltaTime * MovementSpeed_Horizontal)), true);
 	SetActorLocation((GetActorLocation() + (FVector(0.0f, 0.0f, (DeltaTime * MovementSpeed_Vertical)))), true);
 }

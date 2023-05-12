@@ -194,7 +194,7 @@ void ABaseEnemy::Death()
 		}
 		CurrentGameInstance->EnemyNum = FMath::Clamp(CurrentGameInstance->EnemyNum - 1, 0, INFINITY);
 
-		GetWorldTimerManager().SetTimer(CurrentGameInstance->Handle_NextLevelTimer, CurrentGameInstance, &UMyGameInstance::StartNextLevelTimer, 5.0f, false);
+		GetWorldTimerManager().SetTimer(CurrentGameInstance->Handle_NextLevelTimer, CurrentGameInstance, &UMyGameInstance::StartNextLevelTimer, 3.0f, false);
 	}
 	Destroy();
 }

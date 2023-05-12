@@ -71,6 +71,14 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	float TurretInterval_TimeLeft;
 
+	/** Default material reference */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UMaterialInterface* DefaultMat;
+	
+	/** Warning material reference */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UMaterialInterface* WarningMat;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
