@@ -27,9 +27,12 @@ public:
 	//Body segment array
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	TArray<AStampipedeSegment_Body*> MiddleSegments;
+	//Back reference
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	TSubclassOf<class AStampipedeSegment_Back> BackRef;
 	//Rear end
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	class AStampipedeSegment_Back* Back;
+	AStampipedeSegment_Back* Back;
 
 	//Bounding volume for the Stampipede's movement
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
@@ -40,11 +43,11 @@ public:
 	int MiddleSegmentNum;
 
 	//Normal movement speed
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	float MovementSpeed;
 
 	//Offset to apply to each segment
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	float SegmentOffset;
 
 	/** The enemy's current rotator */

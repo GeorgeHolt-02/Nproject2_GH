@@ -36,7 +36,7 @@ public: \
 
 #define FID_Nproject2_GH_Source_Nproject2_GH_StampipedeSegment_Body_h_15_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
-	NO_API AStampipedeSegment_Body(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
+	NO_API AStampipedeSegment_Body(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AStampipedeSegment_Body) \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, AStampipedeSegment_Body); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AStampipedeSegment_Body); \
@@ -48,8 +48,6 @@ public:
 
 
 #define FID_Nproject2_GH_Source_Nproject2_GH_StampipedeSegment_Body_h_15_ENHANCED_CONSTRUCTORS \
-	/** Standard constructor, called after all reflected properties have been initialized */ \
-	NO_API AStampipedeSegment_Body() { }; \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AStampipedeSegment_Body(AStampipedeSegment_Body&&); \

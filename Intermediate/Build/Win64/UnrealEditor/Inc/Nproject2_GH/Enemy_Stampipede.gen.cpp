@@ -49,6 +49,10 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_Stampipede() {}
 #endif
 		static const UECodeGen_Private::FArrayPropertyParams NewProp_MiddleSegments;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_BackRef_MetaData[];
+#endif
+		static const UECodeGen_Private::FClassPropertyParams NewProp_BackRef;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_Back_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_Back;
@@ -120,6 +124,15 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_Stampipede() {}
 #endif
 	const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_MiddleSegments = { "MiddleSegments", nullptr, (EPropertyFlags)0x0010000000020005, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_Stampipede, MiddleSegments), EArrayPropertyFlags::None, METADATA_PARAMS(Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_MiddleSegments_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_MiddleSegments_MetaData)) };
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_BackRef_MetaData[] = {
+		{ "Category", "Enemy_Stampipede" },
+		{ "Comment", "//Back reference\n" },
+		{ "ModuleRelativePath", "Enemy_Stampipede.h" },
+		{ "ToolTip", "Back reference" },
+	};
+#endif
+	const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_BackRef = { "BackRef", nullptr, (EPropertyFlags)0x0014000000010015, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_Stampipede, BackRef), Z_Construct_UClass_AStampipedeSegment_Back_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_BackRef_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_BackRef_MetaData)) };
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_Back_MetaData[] = {
 		{ "Category", "Enemy_Stampipede" },
 		{ "Comment", "//Rear end\n" },
@@ -155,7 +168,7 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_Stampipede() {}
 		{ "ToolTip", "Normal movement speed" },
 	};
 #endif
-	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_MovementSpeed = { "MovementSpeed", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_Stampipede, MovementSpeed), METADATA_PARAMS(Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_MovementSpeed_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_MovementSpeed_MetaData)) };
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_MovementSpeed = { "MovementSpeed", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_Stampipede, MovementSpeed), METADATA_PARAMS(Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_MovementSpeed_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_MovementSpeed_MetaData)) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_SegmentOffset_MetaData[] = {
 		{ "Category", "Enemy_Stampipede" },
@@ -164,7 +177,7 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_Stampipede() {}
 		{ "ToolTip", "Offset to apply to each segment" },
 	};
 #endif
-	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_SegmentOffset = { "SegmentOffset", nullptr, (EPropertyFlags)0x0010000000010015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_Stampipede, SegmentOffset), METADATA_PARAMS(Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_SegmentOffset_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_SegmentOffset_MetaData)) };
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_SegmentOffset = { "SegmentOffset", nullptr, (EPropertyFlags)0x0010000000000015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(AEnemy_Stampipede, SegmentOffset), METADATA_PARAMS(Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_SegmentOffset_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_SegmentOffset_MetaData)) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_Rotator_MetaData[] = {
 		{ "Category", "Enemy_Stampipede" },
@@ -188,6 +201,7 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_Stampipede() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_MiddleSegmentRef,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_MiddleSegments_Inner,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_MiddleSegments,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_BackRef,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_Back,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_BoundVolume,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AEnemy_Stampipede_Statics::NewProp_MiddleSegmentNum,
@@ -232,9 +246,9 @@ void EmptyLinkFunctionForGeneratedCodeEnemy_Stampipede() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_Stampipede_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AEnemy_Stampipede, AEnemy_Stampipede::StaticClass, TEXT("AEnemy_Stampipede"), &Z_Registration_Info_UClass_AEnemy_Stampipede, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemy_Stampipede), 3886972298U) },
+		{ Z_Construct_UClass_AEnemy_Stampipede, AEnemy_Stampipede::StaticClass, TEXT("AEnemy_Stampipede"), &Z_Registration_Info_UClass_AEnemy_Stampipede, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AEnemy_Stampipede), 778821945U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_Stampipede_h_3872960478(TEXT("/Script/Nproject2_GH"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_Stampipede_h_3936824550(TEXT("/Script/Nproject2_GH"),
 		Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_Stampipede_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Nproject2_GH_Source_Nproject2_GH_Enemy_Stampipede_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
